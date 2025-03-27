@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Redefinir senha </title>
+</head>
+<body>
+    <form>
+        <p>
+        <label> Digite sua nova senha: </label>
+        <input type="password">
+        </p>
+        <p>
+        <label> Confirme sua nova senha: </label>
+        <input type="password">
+        </p>
+        <button onclick="mensagem()"> Redefinir senha </button>
+    </form>
+    <script>
+        function mensagem(){
+            alert('Senha redefinida com sucesso!')
+        }
+        setTimeout(function() {
+                window.location.href ="../Inicial/inicial.html";
+            }, 3000);
+    </script>
+</body>
+</html>

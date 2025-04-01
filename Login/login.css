@@ -40,7 +40,7 @@ button {
     color: white;
 }
 
-.login:hover {
+button:hover {
     transition: 1s;
     color: white;
     background-color: black;

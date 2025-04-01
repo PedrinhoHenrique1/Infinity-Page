@@ -25,8 +25,17 @@
             <label> Confirme sua senha: </label>
             <input type="password">
         </p>
-        <button> Criar conta </button>
+        <button onclick="mensagem()"> Criar conta </button>
     </form>
+
+    <script>
+        function mensagem(){
+            alert('Conta criada com sucesso!')
+        }
+        setTimeout(function() {
+                window.location.href ="./login.html";
+            }, 3000);
+    </script>
 </body>
 
 </html>

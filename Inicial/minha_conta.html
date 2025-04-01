@@ -15,7 +15,7 @@
         <h2>Informações da Conta</h2>
         <p><strong>Nome:</strong> João da Silva</p>
         <p><strong>E-mail:</strong> joao.silva@email.com</p>
-        <button>Editar Informações</button>
+        <button onclick="editar()">Editar Informações</button>
     </section>
 
     <section id="historico-pedidos">
@@ -46,8 +46,14 @@
     </section>
 
     <section id="voltar">
-        <button onclick="window.history.back();"> Voltar </button>
+        <button onclick="window.location.href='inicial.html'"> Voltar </button>
     </section>
+
+    <script>
+            function editar() {
+        window.location.href = "editar_informacoes.html"
+    }
+    </script>
 
 </body>
 </html>

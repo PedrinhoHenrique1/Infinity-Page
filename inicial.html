@@ -14,20 +14,21 @@
 
 <body>
 
-    <button id="menuButton" class="menuButton">
+    <button class="menu-btn" id="toggle-btn">
         <i class="fa-solid fa-bars"></i>
     </button>
 
     <div id="sidebar" class="sidebar">
-        <button id="closeButton" class="close-button">×</button>
+        <div class="sidebar-header">
         <h2>Menu</h2>
+        </div>
         <ul>
-            <li><a href="garcom.html"><i class="fa-solid fa-house"></i> Início </a></li>
-            <li><a href="caixa.html"><i class="fa-solid fa-bag-shopping"></i> Meus pedidos </a></li>
-            <li><a href="relatorio.html"><i class="fa-solid fa-star"></i> Favoritos </a></li>
+            <li><a href="inicial.html"><i class="fa-solid fa-house"></i> Início </a></li>
+            <li><a href="pedidos.html"><i class="fa-solid fa-bag-shopping"></i> Meus pedidos </a></li>
+            <li><a href="favoritos.html"><i class="fa-solid fa-star"></i> Favoritos </a></li>
             <li><a href="estoque.html"><i class="fa-solid fa-cart-shopping"></i> Carrinho </a></li>
-            <li><a href="configuracoes.html"><i class="fa-solid fa-arrows-turn-to-dots"></i> Trocas </a></li>
-            <li><a href="index.html"><i class="fa-solid fa-door-open"></i> Sair </a></li>
+            <li><a href="trocas.html"><i class="fa-solid fa-arrows-rotate"></i> Trocas </a></li>
+            <li><a href="../Login/login.html"><i class="fa-solid fa-door-open"></i> Sair </a></li>
         </ul>
     </div>
 
@@ -36,7 +37,7 @@
             <img src="img/logo.png" width="150px">
         </div>
         <div class="texto">
-            <input type="search" placeholder="O que você busca hoje?">
+            <input type="search" placeholder="O que você busca hoje?" oninput="filtrarItens()">
         </div>
         <div class="trade">
             <a href="#"> Trocas </a>
@@ -47,13 +48,12 @@
         <div class="icons">
             <div class="img1">
                 <a href="favoritos.html">
-                    <img src="https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-mono/512/White-Heart-icon.png"
-                        width="60px">
+                    <i class="fa-solid fa-heart fa-3x" style="color: #ffffff;"></i>
                 </a>
             </div>
             <div class="img2">
                 <a href="minha_conta.html">
-                    <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" width="40px">
+                    <i class="fa-regular fa-circle-user fa-3x" style="color: #ffffff;"></i>
                 </a>
             </div>
         </div>
@@ -111,6 +111,30 @@
             </div>
         </div>
     </section>
+
+    <script>
+        const toggleBtn = document.getElementById('toggle-btn');
+        const sidebar = document.getElementById('sidebar');
+    
+        toggleBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('active');
+        });
+      </script>
+
+    <script>
+    function filtrarItens() {
+        const termo = document.getElementById("buscaItem").value.toLowerCase();
+        const itens = document.querySelectorAll(".item");
+        itens.forEach((item) => {
+            const nomeItem = item.textContent.toLowerCase();
+            if (nomeItem.includes(termo)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+    </script>
 </body>
 
 </html>

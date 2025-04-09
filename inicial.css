@@ -9,12 +9,13 @@ body {
     margin: 0;
 }
 
-header {
+header,
+header-admin {
     background-color: darkslateblue;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0px 20px;
     height: 120px;
 }
 
@@ -47,10 +48,13 @@ nav ul li a:hover {
     color: white;
     transition: 1s;
     border: 1px;
+    border-radius: 20px;
 }
 
 .logo {
     height: 105px;
+    position: absolute;
+    left: 120px;
 }
 
 .texto {
@@ -60,11 +64,11 @@ nav ul li a:hover {
 }
 
 .texto input[type="search"] {
-    width: 100%;
+    width: 2000px;
     max-width: 670px;
     padding: 10px;
     position: relative;
-    right: 70px;
+    left: 30px;
     border-radius: 20px;
     outline: none;
     border: none;
@@ -75,6 +79,7 @@ nav ul li a:hover {
     right: 90px;
     text-decoration: none;
     color: white;
+    font-size: 20px;
 }
 
 .trade a {
@@ -82,6 +87,7 @@ nav ul li a:hover {
     right: 140px;
     text-decoration: none;
     color: white;
+    font-size: 20px;
 }
 
 .icons {
@@ -127,6 +133,7 @@ nav ul li a:hover {
 
 .dc-button:hover {
     transform: scale(1.1);
+    background-color: #5073ff;
 }
 
 h2 {
@@ -168,13 +175,14 @@ h2 {
 .product h3 {
     font-size: 1rem;
     margin: 10px 0;
-    color: #333;
+    color: black;
 }
 
 .product p {
     font-size: 1.1rem;
     font-weight: bold;
-    color: darkslateblue; /* DarkSlateBlue */
+    color: black;
+    /* DarkSlateBlue */
 }
 
 .buy-button {
@@ -190,5 +198,70 @@ h2 {
 }
 
 .buy-button:hover {
-    background: #6A1FB3;
+    background: #5073ff;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #4d505f;
+    color: white;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    background-color: rgb(113, 102, 189);
+    padding: 20px;
+    margin: -20px -20px 0px -20px;
+    border-bottom: 2px solid;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+.sidebar ul li {
+    list-style-type: none;
+    padding-top: 30px;
+    text-decoration: none;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+/*----------------------------------------------------------------------------------------------------------------------*/
+header-admin {
+    display: flex;
+}
+
+header-admin h1 {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
 }

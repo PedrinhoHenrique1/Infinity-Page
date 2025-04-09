@@ -43,7 +43,7 @@ button {
 button:hover {
     transition: 1s;
     color: white;
-    background-color: black;
+    background-color: #5073ff;
     width: 8%;
     cursor: pointer;
 }

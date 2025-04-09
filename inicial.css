@@ -254,14 +254,214 @@ h2 {
 }
 
 /*----------------------------------------------------------------------------------------------------------------------*/
+body-admin {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 header-admin {
+    background-color: darkslateblue;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    position: relative;
+}
+
+header-admin i {
+    position: relative;
+    right: 30px;
+}
+
+.menu-toggle-admin {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 20px;
+    right: 150px;
+    top: 40px;
+}
+
+.menu {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.menu button {
+    display: block;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: darkslateblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.menu button:hover {
+    background-color: cornflowerblue;
+    transition: 1.0s;
+}
+
+main {
+    padding: 20px;
+}
+
+.section-header {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+/* Estoque ------------------------------------------------------------------------------------------------------------------------------------------------------*/
+.header-estoque {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu-toggle {
+    background-color: white;
+    color: darkslateblue;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.menu-toggle:hover {
+    background-color: #e0e0e0;
+}
+
+.main-estoque {
+    padding: 20px;
+}
+
+.section-estoque {
+    display: block;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-estoque h2 {
+    position: relative;
+    top: 100px;
+} 
+
+.form-estoque {
+    margin-bottom: 20px;
+}
+
+.form-estoque label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.form-estoque input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid darkslateblue;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-estoque button {
+    background-color: darkslateblue;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.form-estoque button:hover {
+    background-color: #5a5a9a;
+}
+
+h3 {
+    margin-top: 10px;
+    color: darkslateblue;
+}
+
+.tabela-estoque {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabela-estoque th, .tabela-estoque td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid darkslateblue;
+}
+
+.tabela-estoque th {
+    background-color: darkslateblue;
+    color: white;
+}
+
+.tabela-estoque tr:nth-child(even) {
+    background-color: #f2f2f2; 
+}
+
+.tabela-estoque tr:hover {
+    background-color: #e0e0e0; 
+}
+
+.tabela-estoque .acoes {
     display: flex;
 }
 
-header-admin h1 {
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+.tabela-estoque button {
+    background-color: darkslateblue;
     color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.tabela-estoque button:hover {
+    background-color: #5a5a9a;
+}
+
+.tabela-estoque button.remover {
+    background-color: #d9534f;
+}
+
+.tabela-estoque button.remover:hover {
+    background-color: #c9302c;
+}
+
+.tabela-estoque button {
+    background-color: darkslateblue;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tabela-estoque button:hover {
+    background-color: #5a5a9a;
 }

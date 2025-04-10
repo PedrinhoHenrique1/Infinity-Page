@@ -1,0 +1,252 @@
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background: linear-gradient(to right, #1e1f3b, #4d6ac5); 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    height: 120px;
+}
+
+nav {
+    background-color: #dadada;
+    overflow: hidden;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    flex: 1;
+}
+
+nav ul li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 0;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: rgb(92, 92, 92);
+    color: white;
+    transition: 1s;
+    border: 1px;
+}
+
+.logo {
+    height: 105px;
+    position: absolute;
+    left: 120px;
+}
+
+.texto {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.texto input[type="search"] {
+    width: 2000px;
+    max-width: 670px;
+    padding: 10px;
+    position: relative;
+    left: 30px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+}
+
+.atendimento a {
+    position: relative;
+    right: 90px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.trade a {
+    position: relative;
+    right: 140px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.icons {
+    display: flex;
+    gap: 50px;
+}
+
+.img1 {
+    position: relative;
+    right: 30px;
+}
+
+.img2 {
+    position: relative;
+    right: 30px;
+}
+
+.img1 img,
+.img2 img {
+    width: 40px;
+}
+
+.dc-button {
+    display: inline-block;
+    position: relative;
+    left: 215px;
+    background-color: #4259a6;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out;
+    margin-left: 60px;
+    margin-top: 40px;
+    width: 170px;
+    height: 50px;
+    justify-content: space-between;
+    color: white;
+    font-size: 22px;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 2px;
+}
+
+.dc-button:hover {
+    transform: scale(1.1);
+    background-color: #5073ff;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.product {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    margin-top: 20px;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    max-width: 350px;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.product h3 {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: black;
+}
+
+.product p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: black;
+    /* DarkSlateBlue */
+}
+
+.buy-button {
+    background: #4259a6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.buy-button:hover {
+    background: #5073ff;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #4d505f;
+    color: white;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    background-color: rgb(113, 102, 189);
+    padding: 20px;
+    margin: -20px -20px 0px -20px;
+    border-bottom: 2px solid;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+.sidebar ul li {
+    list-style-type: none;
+    padding-top: 30px;
+    text-decoration: none;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 5px;
+}

@@ -1,47 +1,18 @@
-// Menu Lateral
+window.onload = () => {
+    showSection('estoque');
+};
+
 function toggleMenu() {
     const menu = document.getElementById('menu');
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 }
 
 function showSection(sectionId) {
-    const sections = document.querySelectorAll('main .section');
+    const sections = document.querySelectorAll('main > section');
     sections.forEach(section => {
-        section.style.display = 'none';
+        section.style.display = section.id === sectionId ? 'block' : 'none';
     });
-
-    const activeSection = document.getElementById(sectionId);
-    if (activeSection) {
-        activeSection.style.display = 'block';
-    }
-
-    toggleMenu();
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    showSection('estoque');
-});
-
-//Validação de Login
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const email = document.getElementById('email').value.trim();
-    const senha = document.getElementById('senha').value;
-
-    // Simulação de credenciais válidas
-    const usuarios = [
-      { email: 'admin@empresa.com', senha: 'admin123', destino: 'admin.html' },
-    ];
-
-    const usuario = usuarios.find(user => user.email === email && user.senha === senha);
-
-    if (usuario) {
-      window.location.href = usuario.destino;
-    } else {
-      alert('E-mail ou senha inválidos');
-    }
-  });
 
 // Estoque
 function adicionarItem(event) {
@@ -155,4 +126,65 @@ function editarFuncionario(botao) {
 function excluirFuncionario(botao) {
     const linha = botao.closest('tr');
     linha.remove();
+}
+
+//Registro de Produtos
+let editandoProduto = null;
+
+function adicionarProduto(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById("nome-prod").value;
+    const preco = document.getElementById("preco-prod").value;
+    const categoria = document.getElementById("categoria-prod").value;
+
+    if (!nome || !preco || !categoria) return;
+
+    if (editandoProduto) {
+        // Atualiza os dados na linha existente
+        editandoProduto.cells[0].innerText = nome;
+        editandoProduto.cells[1].innerText = preco;
+        editandoProduto.cells[2].innerText = categoria;
+        editandoProduto = null;
+    } else {
+        // Cria uma nova linha
+        const tabela = document.getElementById("tabela-prod");
+        const novaLinha = tabela.insertRow();
+
+        novaLinha.innerHTML = `
+            <td>${nome}</td>
+            <td>${preco}</td>
+            <td>${categoria}</td>
+            <td>
+                <button class="btn-acao-produto" onclick="editarProduto(this)">Editar</button>
+                <button class="btn-acao-produto" onclick="excluirProduto(this)">Excluir</button>
+            </td>
+        `;
+    }
+
+    // Limpa o formulário
+    document.getElementById("form-produto").reset();
+}
+
+function editarProduto(botao) {
+    const linha = botao.parentElement.parentElement;
+    const nome = linha.cells[0].innerText;
+    const preco = linha.cells[1].innerText;
+    const categoria = linha.cells[2].innerText;
+
+    document.getElementById("nome-prod").value = nome;
+    document.getElementById("preco-prod").value = preco;
+    document.getElementById("categoria-prod").value = categoria;
+
+    editandoProduto = linha;
+}
+
+function excluirProduto(botao) {
+    const linha = botao.parentElement.parentElement;
+    linha.remove();
+
+    if (editandoProduto === linha) {
+        document.getElementById("form-produto").reset();
+        editandoProduto = null;
+    }
 }

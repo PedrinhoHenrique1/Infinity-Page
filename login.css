@@ -1,80 +1,70 @@
-* {
+body {
     margin: 0;
     padding: 0;
-}
-
-body {
-    background-color: darkslateblue;
-    font-family: 'Poppins', sans-serif; 
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 70px;
-}
-
-.form-container {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #1e1f3b, #4d6ac5); 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
-    flex-direction: column;
-}
+    height: 100vh;
+  }
 
-button {
-    padding: 15px 30px;
-    font-size: 16px;
+  .login-container {
     background-color: white;
-    width: 220px;
-}
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
 
-.buttons, a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-decoration: none;
-    margin-left: 25px;
-    color: white;
-}
+  .login-container h2 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-bottom: 30px;
+  }
 
-button:hover {
-    transition: 1s;
-    color: white;
-    background-color: #5073ff;
-    width: 8%;
-    cursor: pointer;
-}
+  .form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: rgb(235, 235, 235);
+  }
 
-input {
-    height: 15px;
-    width: 13%;
-    display: flex;
+  .form-container input {
+    width: 100%;
+    padding: 12px;
     margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+    border: 1px solid darkslateblue;
+    border-radius: 8px;
+    font-size: 14px;
+  }
 
-label {
+  .form-container button {
+    width: 100%;
+    background-color: darkslateblue;
     color: white;
-}
-
-a {
-    position: relative;
-    right: 10px;
-    margin-bottom: 20px;
-}
-
-input, button {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 20px;
-    outline: none;
+    padding: 12px;
+    font-size: 16px;
     border: none;
-}
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
 
+  .form-container button:hover {
+    background-color: #5a5a9a;
+  }
 
+  .form-container a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: cornflowerblue;
+    text-decoration: none;
+    font-size: 14px;
+  }
 
+  .form-container a:hover {
+    text-decoration: underline;
+  }

@@ -1,26 +1,49 @@
-//Menu Lateral
+// Menu Lateral
 function toggleMenu() {
     const menu = document.getElementById('menu');
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 }
 
 function showSection(sectionId) {
-    const sections = document.querySelectorAll('.section');
+    const sections = document.querySelectorAll('main .section');
     sections.forEach(section => {
         section.style.display = 'none';
     });
 
     const activeSection = document.getElementById(sectionId);
-    activeSection.style.display = 'block';
+    if (activeSection) {
+        activeSection.style.display = 'block';
+    }
 
     toggleMenu();
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     showSection('estoque');
 });
-//Estoque
+
+//Validação de Login
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+    const senha = document.getElementById('senha').value;
+
+    // Simulação de credenciais válidas
+    const usuarios = [
+      { email: 'admin@empresa.com', senha: 'admin123', destino: 'admin.html' },
+    ];
+
+    const usuario = usuarios.find(user => user.email === email && user.senha === senha);
+
+    if (usuario) {
+      window.location.href = usuario.destino;
+    } else {
+      alert('E-mail ou senha inválidos');
+    }
+  });
+
+// Estoque
 function adicionarItem(event) {
     event.preventDefault();
 
@@ -32,33 +55,38 @@ function adicionarItem(event) {
     const tabela = document.getElementById('tabela-estoque');
     const novaLinha = tabela.insertRow();
 
-    novaLinha.insertCell(0).innerText = nomeLivro;
-    novaLinha.insertCell(1).innerText = autorLivro;
-    novaLinha.insertCell(2).innerText = quantidade;
-    novaLinha.insertCell(3).innerText = `R$ ${parseFloat(preco).toFixed(2)}`;
-
-    const acoesCell = novaLinha.insertCell(4);
-    const editarButton = document.createElement('button');
-    editarButton.innerText = 'Editar';
-    editarButton.onclick = function() { editarItem(editarButton); };
-    acoesCell.appendChild(editarButton);
-
-    const removerButton = document.createElement('button');
-    removerButton.innerText = 'Remover';
-    removerButton.onclick = function() { removerItem(removerButton); };
-    acoesCell.appendChild(removerButton);
+    novaLinha.innerHTML = `
+        <td>${nomeLivro}</td>
+        <td>${autorLivro}</td>
+        <td>${quantidade}</td>
+        <td>R$ ${parseFloat(preco).toFixed(2)}</td>
+        <td>
+            <button onclick="editarItem(this)">Editar</button>
+            <button onclick="removerItem(this)">Remover</button>
+        </td>
+    `;
 
     document.getElementById('form-estoque').reset();
 }
 
 function editarItem(button) {
     const row = button.closest('tr');
-    const nomeLivro = row.cells[0].innerText;
-    const autorLivro = row.cells[1].innerText;
-    const quantidade = row.cells[2].innerText;
-    const preco = row.cells[3].innerText.replace('R$ ', '');
+    const nome = row.cells[0].textContent;
+    const autor = row.cells[1].textContent;
+    const quantidade = row.cells[2].textContent;
+    const preco = row.cells[3].textContent.replace('R$ ', '');
 
-    alert(`Editar: ${nomeLivro}, Autor: ${autorLivro}, Quantidade: ${quantidade}, Preço: R$ ${preco}`);
+    const novoNome = prompt("Editar Nome do Livro:", nome);
+    const novoAutor = prompt("Editar Autor:", autor);
+    const novaQuantidade = prompt("Editar Quantidade:", quantidade);
+    const novoPreco = prompt("Editar Preço:", preco);
+
+    if (novoNome && novoAutor && novaQuantidade && novoPreco) {
+        row.cells[0].textContent = novoNome;
+        row.cells[1].textContent = novoAutor;
+        row.cells[2].textContent = novaQuantidade;
+        row.cells[3].textContent = `R$ ${parseFloat(novoPreco).toFixed(2)}`;
+    }
 }
 
 function removerItem(button) {
@@ -66,61 +94,65 @@ function removerItem(button) {
     row.remove();
     alert('Item removido com sucesso!');
 }
-//Funcionários
-document.getElementById('form-funcionario').addEventListener('submit', function(event) {
+
+
+// Funcionários
+function adicionarFuncionario(event) {
     event.preventDefault();
 
-    const nome = document.getElementById('nome-funcionario').value;
-    const cargo = document.getElementById('cargo').value;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('telefone').value;
+    const nome = document.getElementById('nome-func').value;
+    const email = document.getElementById('email-func').value;
+    const permissao = document.getElementById('permissao-func').value;
 
-    fetch('/funcionarios', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ nome, cargo, email, telefone })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            adicionarFuncionarioNaTabela(data.funcionario);
-            document.getElementById('form-funcionario').reset();
-        } else {
-            alert('Erro ao adicionar funcionário: ' + data.message);
-        }
-    });
-});
+    const tabela = document.getElementById('tabela-func');
+    const novaLinha = document.createElement('tr');
 
-function adicionarFuncionarioNaTabela(funcionario) {
-    const tabela = document.getElementById('tabela-funcionarios').getElementsByTagName('tbody')[0];
-    const novaLinha = tabela.insertRow();
+    novaLinha.innerHTML = `
+        <td>${nome}</td>
+        <td>${email}</td>
+        <td>${permissao}</td>
+        <td>
+            <button class="btn-acao-func" onclick="editarFuncionario(this)">Editar</button>
+            <button class="btn-acao-func" onclick="excluirFuncionario(this)">Excluir</button>
+        </td>
+    `;
 
-    novaLinha.insertCell(0).innerText = funcionario.nome;
-    novaLinha.insertCell(1).innerText = funcionario.cargo;
-    novaLinha.insertCell(2).innerText = funcionario.email;
-    novaLinha.insertCell(3).innerText = funcionario.telefone;
-
-    const acoesCell = novaLinha.insertCell(4);
-    const removerButton = document.createElement('button');
-    removerButton.innerText = 'Remover';
-    removerButton.onclick = function() {
-        removerFuncionario(funcionario.id, novaLinha);
-    };
-    acoesCell.appendChild(removerButton);
+    tabela.appendChild(novaLinha);
+    event.target.reset();
 }
 
-function removerFuncionario(id, linha) {
-    fetch(`/funcionarios/${id}`, {
-        method: 'DELETE'
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            linha.remove();
-        } else {
-            alert('Erro ao remover funcionário: ' + data.message);
-        }
-    });
+function editarFuncionario(botao) {
+    const linha = botao.closest('tr');
+
+    if (botao.textContent === 'Editar') {
+        const nome = linha.children[0].textContent;
+        const email = linha.children[1].textContent;
+        const permissao = linha.children[2].textContent;
+
+        linha.children[0].innerHTML = `<input type="text" value="${nome}">`;
+        linha.children[1].innerHTML = `<input type="email" value="${email}">`;
+        linha.children[2].innerHTML = `
+            <select>
+                <option value="admin" ${permissao === 'Administrador' ? 'selected' : ''}>Administrador</option>
+                <option value="func" ${permissao === 'Funcionário' ? 'selected' : ''}>Funcionário</option>
+            </select>
+        `;
+
+        botao.textContent = 'Salvar';
+    } else {
+        const novoNome = linha.children[0].querySelector('input').value;
+        const novoEmail = linha.children[1].querySelector('input').value;
+        const novaPermissao = linha.children[2].querySelector('select').value;
+
+        linha.children[0].textContent = novoNome;
+        linha.children[1].textContent = novoEmail;
+        linha.children[2].textContent = novaPermissao;
+
+        botao.textContent = 'Editar';
+    }
+}
+
+function excluirFuncionario(botao) {
+    const linha = botao.closest('tr');
+    linha.remove();
 }

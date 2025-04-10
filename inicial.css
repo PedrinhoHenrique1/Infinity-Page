@@ -11,7 +11,7 @@ body {
 
 header,
 header-admin {
-    background-color: darkslateblue;
+    background: linear-gradient(to right, #1e1f3b, #4d6ac5); 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -254,13 +254,15 @@ h2 {
 }
 
 /*----------------------------------------------------------------------------------------------------------------------*/
-body-admin {
+/* Estilo Geral */
+body.admin {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f5;
 }
 
-header-admin {
+header.admin {
     background-color: darkslateblue;
     color: white;
     padding: 10px 20px;
@@ -268,12 +270,17 @@ header-admin {
     position: relative;
 }
 
-header-admin i {
-    position: relative;
+header.admin i {
+    position: absolute;
     right: 30px;
+    top: 20px;
 }
 
-.menu-toggle-admin {
+.admin h1 {
+    color: white;
+}
+
+.admin .menu-toggle-admin {
     background-color: white;
     color: black;
     border: none;
@@ -285,14 +292,14 @@ header-admin i {
     top: 40px;
 }
 
-.menu {
+.admin .menu {
     display: none;
     background-color: #f9f9f9;
     padding: 10px;
     border: 1px solid #ddd;
 }
 
-.menu button {
+.admin .menu button {
     display: block;
     margin: 5px 0;
     padding: 10px;
@@ -301,26 +308,27 @@ header-admin i {
     border: none;
     cursor: pointer;
     border-radius: 20px;
+    transition: background-color 0.3s;
 }
 
-.menu button:hover {
+.admin .menu button:hover {
     background-color: cornflowerblue;
-    transition: 1.0s;
 }
 
-main {
+.admin main {
     padding: 20px;
 }
 
-.section-header {
+.admin .section {
     display: none;
 }
 
-.section.active {
+.admin .section.active {
     display: block;
 }
-/* Estoque ------------------------------------------------------------------------------------------------------------------------------------------------------*/
-.header-estoque {
+
+/* Estoque */
+.admin .header-estoque {
     background-color: cornflowerblue;
     color: white;
     padding: 15px 20px;
@@ -329,7 +337,7 @@ main {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.menu-toggle {
+.admin .menu-toggle {
     background-color: white;
     color: darkslateblue;
     border: none;
@@ -342,37 +350,37 @@ main {
     transition: background-color 0.3s;
 }
 
-.menu-toggle:hover {
+.admin .menu-toggle:hover {
     background-color: #e0e0e0;
 }
 
-.main-estoque {
+.admin .main-estoque {
     padding: 20px;
 }
 
-.section-estoque {
-    display: block;
+.admin .section-estoque {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.section-estoque h2 {
-    position: relative;
-    top: 100px;
-} 
+.admin .section-estoque h2 {
+    color: darkslateblue;
+}
 
-.form-estoque {
+.admin .form-estoque {
     margin-bottom: 20px;
 }
 
-.form-estoque label {
+.admin .form-estoque label {
     display: block;
     margin: 10px 0 5px;
+    font-weight: bold;
+    color: darkslateblue;
 }
 
-.form-estoque input {
+.admin .form-estoque input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -381,7 +389,7 @@ main {
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.form-estoque button {
+.admin .form-estoque button {
     background-color: darkslateblue;
     color: white;
     border: none;
@@ -391,45 +399,42 @@ main {
     transition: background-color 0.3s;
 }
 
-.form-estoque button:hover {
+.admin .form-estoque button:hover {
     background-color: #5a5a9a;
 }
 
-h3 {
-    margin-top: 10px;
-    color: darkslateblue;
-}
-
-.tabela-estoque {
+.admin .tabela-estoque {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: white;
 }
 
-.tabela-estoque th, .tabela-estoque td {
+.admin .tabela-estoque th, .admin .tabela-estoque td {
     padding: 10px;
     text-align: left;
     border: 1px solid darkslateblue;
 }
 
-.tabela-estoque th {
+.admin .tabela-estoque th {
     background-color: darkslateblue;
     color: white;
 }
 
-.tabela-estoque tr:nth-child(even) {
-    background-color: #f2f2f2; 
+.admin .tabela-estoque tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.tabela-estoque tr:hover {
-    background-color: #e0e0e0; 
+.admin .tabela-estoque tr:hover {
+    background-color: #e0e0e0;
 }
 
-.tabela-estoque .acoes {
+.admin .tabela-estoque .acoes {
     display: flex;
+    gap: 10px;
 }
 
-.tabela-estoque button {
+.admin .tabela-estoque button {
     background-color: darkslateblue;
     color: white;
     border: none;
@@ -437,31 +442,106 @@ h3 {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-    margin-left: 10px;
 }
 
-.tabela-estoque button:hover {
+.admin .tabela-estoque button:hover {
     background-color: #5a5a9a;
 }
 
-.tabela-estoque button.remover {
+.admin .tabela-estoque button.remover {
     background-color: #d9534f;
 }
 
-.tabela-estoque button.remover:hover {
+.admin .tabela-estoque button.remover:hover {
     background-color: #c9302c;
 }
 
-.tabela-estoque button {
-    background-color: darkslateblue;
+/* Funcionários */
+.admin #section-func {
+    background-color: #4d505f;
     color: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 800px;
+    font-family: "Poppins", sans-serif;
+}
+
+.admin #section-func h3 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.admin #form-func {
+    background-color: darkslateblue;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.admin #form-func label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.admin #form-func input,
+.admin #form-func select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
     border: none;
-    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.admin #form-func button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
-.tabela-estoque button:hover {
-    background-color: #5a5a9a;
+.admin #form-func button:hover {
+    background-color: lightgray;
+}
+
+.admin .tabela-func {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    color: black;
+}
+
+.admin .tabela-func th,
+.admin .tabela-func td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.admin .tabela-func th {
+    background-color: darkslateblue;
+    color: white;
+}
+
+.admin .btn-acao-func {
+    background-color: white;
+    color: darkslateblue;
+    border: none;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.admin .btn-acao-func:hover {
+    background-color: lightgray;
 }

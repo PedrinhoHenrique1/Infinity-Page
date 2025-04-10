@@ -9,20 +9,20 @@
     <title> Gerenciamento </title>
 </head>
 
-<body-admin>
-    <header-admin>
+<body class="admin">
+    <header>
         <h1>Gerenciamento - Infinity Page </h1>
         <a href="login.html">
             <i class="fa-solid fa-door-open fa-3x" style="color: #ffffff;"></i>
         </a>
         <button class="menu-toggle-admin" onclick="toggleMenu()"> Opções </button>
-    </header-admin>
-    <nav-admin id="menu" class="menu">
+    </header>
+    <nav id="menu" class="menu">
         <button onclick="showSection('estoque')">Estoque</button>
         <button onclick="showSection('funcionarios')">Funcionários</button>
-    </nav-admin>
+    </nav>
     <main>
-        <section-estoque id="estoque" class="section">
+        <section id="estoque" class="section">
             <h2>Estoque</h2>
             <p>Gerencie os livros e produtos disponíveis na livraria.</p>
             <form id="form-estoque" class="form-estoque" onsubmit="adicionarItem(event)">
@@ -55,44 +55,56 @@
                 <tbody id="tabela-estoque">
                 </tbody>
             </table>
-        </section-estoque>
-        <section-func id="funcionarios" class="section" style="display: none;">
-            <section id="secao-adicionar-funcionario">
-                <h2>Adicionar Funcionário</h2>
-                <form id="form-funcionario" aria-labelledby="form-funcionario">
-                    <label for="nome-funcionario">Nome:</label>
-                    <input type="text" id="nome-funcionario" required>
-    
-                    <label for="cargo-funcionario">Cargo:</label>
-                    <input type="text" id="cargo-funcionario" required>
-    
-                    <label for="email-funcionario">E-mail:</label>
-                    <input type="email" id="email-funcionario" required>
-    
-                    <label for="telefone-funcionario">Telefone:</label>
-                    <input type="text" id="telefone-funcionario" required>
-    
-                    <button type="submit">Adicionar Funcionário</button>
-                </form>
-            </section>
-    
-            <section id="secao-listar-funcionarios">
-                <h2>Funcionários Registrados</h2>
-                <table id="tabela-funcionarios">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Cargo</th>
-                            <th>E-mail</th>
-                            <th>Telefone</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabela-funcionarios-body">
-                    </tbody>
-                </table>
-            </section>
-        </section-func>
+        </section>
+        <section id="funcionarios" class="section">
+            <h2>Gerenciamento de Funcionários</h2>
+
+            <form id="form-func" class="form-func" onsubmit="adicionarFuncionario(event)">
+                <label for="nome-func">Nome do Funcionário:</label>
+                <input type="text" id="nome-func" name="nome-func" required>
+
+                <label for="email-func">Email:</label>
+                <input type="email" id="email-func" name="email-func" required>
+
+                <label for="senha-func">Senha:</label>
+                <input type="password" id="senha-func" name="senha-func" required>
+
+                <label for="permissao-func">Permissão:</label>
+                <select id="permissao-func" name="permissao-func" required>
+                    <option value="">Selecione</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Funcionário">Funcionário</option>
+                </select>
+                <br>
+
+                <button type="submit">Adicionar Funcionário</button>
+            </form>
+
+            <h3>Funcionários Cadastrados</h3>
+            <table class="tabela-func">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Permissão</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-func">
+                    <tr>
+                        <td>João Silva</td>
+                        <td>joao@email.com</td>
+                        <td>admin</td>
+                        <td>
+                            <button class="btn-acao-func" onclick="editarFuncionario(this)">Editar</button>
+                            <button class="btn-acao-func" onclick="excluirFuncionario(this)">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
     </main>
     <script src="script.js"></script>
     </body>

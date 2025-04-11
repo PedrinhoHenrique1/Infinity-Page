@@ -20,7 +20,7 @@
 
     <div id="sidebar" class="sidebar">
         <div class="sidebar-header">
-        <h2>Menu</h2>
+            <h2>Menu</h2>
         </div>
         <ul>
             <li><a href="inicial.html"><i class="fa-solid fa-house"></i> Início </a></li>
@@ -37,7 +37,7 @@
             <img src="../images/logo.png" width="150px">
         </div>
         <div class="texto">
-            <input type="search" placeholder="O que você busca hoje?" oninput="filtrarItens()">
+            <input type="search" id="buscaItem" placeholder="O que você busca hoje?" oninput="filtrarItens()">
         </div>
         <div class="trade">
             <a href="#"> Trocas </a>
@@ -51,10 +51,8 @@
                     <i class="fa-solid fa-heart fa-3x" style="color: #ffffff;"></i>
                 </a>
             </div>
-            <div class="img2">
-                <a href="minha_conta.html">
-                    <i class="fa-regular fa-circle-user fa-3x" style="color: #ffffff;"></i>
-                </a>
+            <div id="area-login">
+                <button id="btn-login" onclick="fazerLogin()">Login</button>
             </div>
         </div>
     </header>
@@ -113,28 +111,55 @@
     </section>
 
     <script>
+        // Botão lateral
         const toggleBtn = document.getElementById('toggle-btn');
         const sidebar = document.getElementById('sidebar');
-    
+      
         toggleBtn.addEventListener('click', () => {
           sidebar.classList.toggle('active');
         });
-      </script>
-
-    <script>
-    function filtrarItens() {
-        const termo = document.getElementById("buscaItem").value.toLowerCase();
-        const itens = document.querySelectorAll(".item");
-        itens.forEach((item) => {
+      
+        // Corrige campo de busca
+        function filtrarItens() {
+          const termo = document.querySelector("input[type='search']").value.toLowerCase();
+          const itens = document.querySelectorAll(".product");
+      
+          itens.forEach((item) => {
             const nomeItem = item.textContent.toLowerCase();
-            if (nomeItem.includes(termo)) {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
-            }
+            item.style.display = nomeItem.includes(termo) ? "block" : "none";
+          });
+        }
+      
+        function fazerLogin() {
+          window.location.href = "../pages/login.html";
+        }
+      
+        function fazerLogout() {
+          localStorage.removeItem("usuarioLogado");
+          location.reload();
+        }
+      
+        function verificarLogin() {
+          const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+          const areaLogin = document.getElementById("area-login");
+      
+          if (usuario) {
+            areaLogin.innerHTML = `
+              <div class="usuario-logado" style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-user fa-3x" style="color: #ffffff;"></i>
+                <span style="color: white;">${usuario.email.split('@')[0]}</span>
+                <button onclick="fazerLogout()" style="background:none;border:none;color:white;cursor:pointer;">Sair</button>
+              </div>`;
+          } else {
+            areaLogin.innerHTML = `<button id="btn-login" onclick="fazerLogin()">Login</button>`;
+          }
+        }
+      
+        document.addEventListener("DOMContentLoaded", () => {
+          verificarLogin();
         });
-    }
-    </script>
+      </script>
+      
 </body>
 
 </html>

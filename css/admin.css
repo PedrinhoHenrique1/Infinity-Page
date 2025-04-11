@@ -43,7 +43,7 @@ header.admin i {
 }
 
 .admin .menu button {
-    display: block;
+    display: inline;
     margin: 5px 0;
     padding: 10px;
     background-color: #4259a6;

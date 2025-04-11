@@ -29,10 +29,28 @@
 
                 <a href="Esqueci_senha1.html" class="forgot">Esqueci minha senha</a>
                 <a href="./Criar_conta.html">Ainda não tem conta?</a>
-                <a href="../Inicial/inicial.html">Entrar sem login</a>
             </div>
         </form>
     </main>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+
+    const usuarioValido = email === "teste@teste.com" && senha === "123456";
+
+    if (usuarioValido) {
+      localStorage.setItem("usuarioLogado", JSON.stringify({ email }));
+      
+      window.location.href = "../pages/inicial.html";
+    } else {
+      alert("Email ou senha incorretos.");
+    }
+  });
+    </script>
 </body>
 
 </html>

@@ -248,6 +248,127 @@ h2 {
     background: #5073ff;
 }
 
+/* === Seção de detalhe do produto === */
+.produto-detalhe {
+    background: linear-gradient(to bottom, #1e1f3b, #2b2f77); /* Gradiente consistente com o header */
+    color: #f4f4f4;
+    padding: 40px 5%;
+    min-height: calc(100vh - 120px); /* Ocupa o espaço da tela abaixo do header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Container para o conteúdo */
+  .produto-detalhe-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(30, 31, 59, 0.95); /* Fundo semi-transparente com cor consistente */
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  /* Botão de voltar */
+  .produto-detalhe-voltar {
+    background: none;
+    color: #4d6ac5;
+    font-size: 1.2rem;
+    border: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .produto-detalhe-voltar:hover {
+    color: #7393e5;
+  }
+  
+  /* Layout flexível para o conteúdo */
+  .produto-detalhe-box {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px;
+  }
+  
+  @media(min-width: 768px) {
+    .produto-detalhe-box {
+      flex-direction: row;
+      gap: 60px;
+      align-items: flex-start;
+    }
+  }
+  
+  /* Estilo da imagem do produto */
+  .produto-detalhe-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .produto-detalhe-img img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Informações do produto */
+  .produto-detalhe-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #e0e0e0;
+  }
+  
+  .produto-detalhe-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #7393e5;
+  }
+  
+  .produto-detalhe-preco {
+    font-size: 2rem;
+    color: #ffcc00;
+    margin-bottom: 20px;
+  }
+  
+  .produto-detalhe-descricao {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.8;
+    color: #cccccc;
+  }
+  
+  /* Botão de ação */
+  .produto-detalhe-btn {
+    background: linear-gradient(to right, #4d6ac5, #7393e5);
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    align-self: flex-start;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .produto-detalhe-btn:hover {
+    background: linear-gradient(to right, #7393e5, #a1b8f5);
+    transform: translateY(-2px);
+  }
+  
+  .produto-detalhe-btn:active {
+    transform: translateY(0);
+  }
+  
 .sidebar {
     position: fixed;
     top: 0;
@@ -288,7 +409,7 @@ h2 {
 }
 
 .menu-btn {
-    position: fixed;
+    position: absolute;
     top: 20px;
     left: 20px;
     background-color: #ffffff;

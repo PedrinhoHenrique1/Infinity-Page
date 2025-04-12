@@ -56,110 +56,141 @@
             </div>
         </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#novidades"> Novidades </a></li>
-            <li><a href="#esportes"> Esportes </a></li>
-            <li><a href="#dc_comics"> DC Comics </a></li>
-            <li><a href="#marvel"> Marvel </a></li>
-        </ul>
-    </nav>
+    <main id="conteudo-principal">
+        <nav>
+            <ul>
+                <li><a href="#novidades"> Novidades </a></li>
+                <li><a href="#esportes"> Esportes </a></li>
+                <li><a href="#dc_comics"> DC Comics </a></li>
+                <li><a href="#marvel"> Marvel </a></li>
+            </ul>
+        </nav>
 
-    <nav2>
-        <button class="dc-button"> Ficção </button>
-        <button class="dc-button"> Romance </button>
-        <button class="dc-button"> Comédia </button>
-        <button class="dc-button"> Quadrinhos </button>
-        <button class="dc-button"> Acadêmico </button>
-        <button class="dc-button"> Colecionáveis </button>
-    </nav2>
+        <nav2>
+            <button class="dc-button" data-category="ficcao"> Ficção </button>
+            <button class="dc-button" data-category="romance"> Romance </button>
+            <button class="dc-button" data-category="comedia"> Comédia </button>
+            <button class="dc-button" data-category="quadrinhos"> Quadrinhos </button>
+            <button class="dc-button" data-category="academico"> Acadêmico </button>
+            <button class="dc-button" data-category="colecionaveis"> Colecionáveis </button>
+        </nav2>
 
-    <section>
-        <h2> Novidades </h2>
-    </section>
+        <section>
+            <h2> Novidades </h2>
+        </section>
 
-    <section>
-        <div class="products-container">
-            <div class="product">
-                <img src="../images/coringa.png" alt="Livro 1">
-                <h3> Batman: A Piada Mortal </h3>
-                <p>R$ 30,90</p>
-                <button class="buy-button">Comprar</button>
+        <section id="secao-produtos">
+            <div class="products-container">
+                <div class="product" onclick="mostrarDetalhe('1')">
+                    <img src="../images/coringa.png" alt="Livro 1">
+                    <h3> Batman: A Piada Mortal </h3>
+                    <p>R$ 30,90</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="product" onclick="mostrarDetalhe('2')">
+                    <img src="../images/silver-fang.png" alt="Livro 2">
+                    <h3>One-Punch Man Vol. 4</h3>
+                    <p>R$ 42,90</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="product">
+                    <img src="../images/vingadores.png" alt="Livro 3">
+                    <h3>Os Vingadores 17/74</h3>
+                    <p>R$ 49,99</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+
+                <div class="product">
+                    <img src="../images/tio-patinhas.png" alt="Livro 3">
+                    <h3> Tio Patinhas E A Última Aventura </h3>
+                    <p>R$ 129,99</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
             </div>
-
-            <div class="product">
-                <img src="../images/silver-fang.png" alt="Livro 2">
-                <h3>One-Punch Man Vol. 4</h3>
-                <p>R$ 42,90</p>
-                <button class="buy-button">Comprar</button>
-            </div>
-
-            <div class="product">
-                <img src="../images/vingadores.png" alt="Livro 3">
-                <h3>Os Vingadores 17/74</h3>
-                <p>R$ 49,99</p>
-                <button class="buy-button">Comprar</button>
-            </div>
-
-            <div class="product">
-                <img src="../images/tio-patinhas.png" alt="Livro 3">
-                <h3> Tio Patinhas E A Última Aventura </h3>
-                <p>R$ 129,99</p>
-                <button class="buy-button">Comprar</button>
+        </section>
+    </main>
+    <section id="detalhe-produto-1" class="produto-detalhe" style="display: none;">
+        <div class="produto-detalhe-container">
+            <button class="produto-detalhe-voltar" onclick="voltarParaHome()">← Voltar</button>
+            <div class="produto-detalhe-box">
+                <div class="produto-detalhe-img">
+                    <img src="../images/coringa.png" alt="Batman: A Piada Mortal">
+                </div>
+                <div class="produto-detalhe-info">
+                    <h2>Batman: A Piada Mortal</h2>
+                    <p class="produto-detalhe-preco">R$ 30,90</p>
+                    <p class="produto-detalhe-descricao">
+                        Uma das obras mais impactantes do universo do Batman. A origem do Coringa recontada de forma
+                        sombria e envolvente.
+                    </p>
+                    <button class="produto-detalhe-btn">Comprar agora</button>
+                </div>
             </div>
         </div>
+    </section>
+    <section id="detalhe-produto-2" class="detalhe-produto" style="display: none;">
+        <button onclick="voltarParaHome()">← Voltar</button>
+        <h2>One-Punch Man Vol. 4</h2>
+        <img src="../images/silver-fang.png" alt="One-Punch Man">
+        <p>Descrição completa do produto aqui...</p>
+        <p>R$ 42,90</p>
+        <button class="buy-button">Comprar</button>
     </section>
 
     <script>
         // Botão lateral
         const toggleBtn = document.getElementById('toggle-btn');
         const sidebar = document.getElementById('sidebar');
-      
+
         toggleBtn.addEventListener('click', () => {
-          sidebar.classList.toggle('active');
+            sidebar.classList.toggle('active');
         });
-      
+
         // Corrige campo de busca
         function filtrarItens() {
-          const termo = document.querySelector("input[type='search']").value.toLowerCase();
-          const itens = document.querySelectorAll(".product");
-      
-          itens.forEach((item) => {
-            const nomeItem = item.textContent.toLowerCase();
-            item.style.display = nomeItem.includes(termo) ? "block" : "none";
-          });
+            const termo = document.querySelector("input[type='search']").value.toLowerCase();
+            const itens = document.querySelectorAll(".product");
+
+            itens.forEach((item) => {
+                const nomeItem = item.textContent.toLowerCase();
+                item.style.display = nomeItem.includes(termo) ? "block" : "none";
+            });
         }
-      
+
         function fazerLogin() {
-          window.location.href = "../pages/login.html";
+            window.location.href = "../pages/login.html";
         }
-      
+
         function fazerLogout() {
-          localStorage.removeItem("usuarioLogado");
-          location.reload();
+            localStorage.removeItem("usuarioLogado");
+            location.reload();
         }
-      
+
         function verificarLogin() {
-          const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
-          const areaLogin = document.getElementById("area-login");
-      
-          if (usuario) {
-            areaLogin.innerHTML = `
+            const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+            const areaLogin = document.getElementById("area-login");
+
+            if (usuario) {
+                areaLogin.innerHTML = `
               <div class="usuario-logado" style="display: flex; align-items: center; gap: 10px;">
                 <i class="fa-solid fa-user fa-3x" style="color: #ffffff;"></i>
                 <span style="color: white;">${usuario.email.split('@')[0]}</span>
                 <button onclick="fazerLogout()" style="background:none;border:none;color:white;cursor:pointer;">Sair</button>
               </div>`;
-          } else {
-            areaLogin.innerHTML = `<button id="btn-login" onclick="fazerLogin()">Login</button>`;
-          }
+            } else {
+                areaLogin.innerHTML = `<button id="btn-login" onclick="fazerLogin()">Login</button>`;
+            }
         }
-      
+
         document.addEventListener("DOMContentLoaded", () => {
-          verificarLogin();
+            verificarLogin();
         });
-      </script>
-      
+    </script>
+
+    <script src="../js/inicial.js"> </script>
+
 </body>
 
 </html>

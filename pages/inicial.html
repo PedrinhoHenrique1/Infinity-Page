@@ -40,7 +40,7 @@
             <input type="search" id="buscaItem" placeholder="O que você busca hoje?" oninput="filtrarItens()">
         </div>
         <div class="trade">
-            <a href="#"> Trocas </a>
+            <a href="../pages/trocas.html"> Trocas </a>
         </div>
         <div class="atendimento">
             <a href="atendimento.html"> Atendimento ao Cliente </a>
@@ -95,14 +95,14 @@
                     <button class="buy-button">Comprar</button>
                 </div>
 
-                <div class="product">
+                <div class="product" onclick="mostrarDetalhe('3')">
                     <img src="../images/vingadores.png" alt="Livro 3">
                     <h3>Os Vingadores 17/74</h3>
                     <p>R$ 49,99</p>
                     <button class="buy-button">Comprar</button>
                 </div>
 
-                <div class="product">
+                <div class="product" onclick="mostrarDetalhe('4')">
                     <img src="../images/tio-patinhas.png" alt="Livro 3">
                     <h3> Tio Patinhas E A Última Aventura </h3>
                     <p>R$ 129,99</p>
@@ -111,32 +111,173 @@
             </div>
         </section>
     </main>
+
     <section id="detalhe-produto-1" class="produto-detalhe" style="display: none;">
         <div class="produto-detalhe-container">
             <button class="produto-detalhe-voltar" onclick="voltarParaHome()">← Voltar</button>
             <div class="produto-detalhe-box">
                 <div class="produto-detalhe-img">
-                    <img src="../images/coringa.png" alt="Batman: A Piada Mortal">
+                    <img src="../images/coringa-full.jpg" alt="Batman: A Piada Mortal">
                 </div>
                 <div class="produto-detalhe-info">
                     <h2>Batman: A Piada Mortal</h2>
+                    <p class="produto-detalhe-subtitulo">Por Alan Moore e Brian Bolland</p>
+                    <div class="produto-detalhe-avaliacao">
+                        <span>★★★★☆</span>
+                        <small>(254 avaliações)</small>
+                    </div>
                     <p class="produto-detalhe-preco">R$ 30,90</p>
                     <p class="produto-detalhe-descricao">
                         Uma das obras mais impactantes do universo do Batman. A origem do Coringa recontada de forma
                         sombria e envolvente.
                     </p>
-                    <button class="produto-detalhe-btn">Comprar agora</button>
+                    <ul class="produto-detalhe-tecnico">
+                        <li>Editora: DC Comics</li>
+                        <li>Idioma: Português</li>
+                        <li>Encadernação: Capa dura</li>
+                        <li>Número de páginas: 64</li>
+                        <li>Data de lançamento: 10/2020</li>
+                    </ul>
+                    <div class="produto-detalhe-compra">
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" min="1" value="1">
+                        <button class="produto-detalhe-btn">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="produto-relacionado">
+                <h3>Produtos Relacionados</h3>
+                <div class="produto-relacionado-lista">
+                    <!-- Cards com produtos relacionados -->
                 </div>
             </div>
         </div>
     </section>
-    <section id="detalhe-produto-2" class="detalhe-produto" style="display: none;">
-        <button onclick="voltarParaHome()">← Voltar</button>
-        <h2>One-Punch Man Vol. 4</h2>
-        <img src="../images/silver-fang.png" alt="One-Punch Man">
-        <p>Descrição completa do produto aqui...</p>
-        <p>R$ 42,90</p>
-        <button class="buy-button">Comprar</button>
+    <section id="detalhe-produto-2" class="produto-detalhe" style="display: none;">
+        <div class="produto-detalhe-container">
+            <button class="produto-detalhe-voltar" onclick="voltarParaHome()">← Voltar</button>
+            <div class="produto-detalhe-box">
+                <div class="produto-detalhe-img">
+                    <img src="../images/silver-fang.png" alt="One-Punch Man Vol. 4">
+                </div>
+                <div class="produto-detalhe-info">
+                    <h2> One-Punch Man Vol. 4 </h2>
+                    <p class="produto-detalhe-subtitulo">Por Alan Moore e Brian Bolland</p>
+                    <div class="produto-detalhe-avaliacao">
+                        <span>★★★★☆</span>
+                        <small>(126 avaliações)</small>
+                    </div>
+                    <p class="produto-detalhe-preco">R$ 42,90</p>
+                    <p class="produto-detalhe-descricao">
+                        O quarto volume da série que redefiniu o gênero de super-heróis. A luta contra o poderoso Garou
+                        começa!
+                    </p>
+                    <ul class="produto-detalhe-tecnico">
+                        <li>Editora: Panini</li>
+                        <li>Idioma: Português</li>
+                        <li>Encadernação: Capa dura</li>
+                        <li>Número de páginas: 124</li>
+                        <li>Data de lançamento: 09/2023</li>
+                    </ul>
+                    <div class="produto-detalhe-compra">
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" min="1" value="1">
+                        <button class="produto-detalhe-btn">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="produto-relacionado">
+                <h3>Produtos Relacionados</h3>
+                <div class="produto-relacionado-lista">
+                    <!-- Cards com produtos relacionados -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="detalhe-produto-3" class="produto-detalhe" style="display: none;">
+        <div class="produto-detalhe-container">
+            <button class="produto-detalhe-voltar" onclick="voltarParaHome()">← Voltar</button>
+            <div class="produto-detalhe-box">
+                <div class="produto-detalhe-img">
+                    <img src="../images/vingadores.png" alt="Os Vingadores 17/74">
+                </div>
+                <div class="produto-detalhe-info">
+                    <h2>Os Vingadores 17/74</h2>
+                    <p class="produto-detalhe-subtitulo">Por Roy Thomas e John Buscema</p>
+                    <div class="produto-detalhe-avaliacao">
+                        <span>★★★★☆</span>
+                        <small>(198 avaliações)</small>
+                    </div>
+                    <p class="produto-detalhe-preco">R$ 49,99</p>
+                    <p class="produto-detalhe-descricao">
+                        Uma edição clássica dos Vingadores, trazendo aventuras épicas e momentos marcantes da equipe
+                        mais poderosa da Terra.
+                    </p>
+                    <ul class="produto-detalhe-tecnico">
+                        <li>Editora: Marvel Comics</li>
+                        <li>Idioma: Português</li>
+                        <li>Encadernação: Capa dura</li>
+                        <li>Número de páginas: 96</li>
+                        <li>Data de lançamento: 05/2022</li>
+                    </ul>
+                    <div class="produto-detalhe-compra">
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" min="1" value="1">
+                        <button class="produto-detalhe-btn">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="produto-relacionado">
+                <h3>Produtos Relacionados</h3>
+                <div class="produto-relacionado-lista">
+                    <!-- Cards com produtos relacionados -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="detalhe-produto-4" class="produto-detalhe" style="display: none;">
+        <div class="produto-detalhe-container">
+            <button class="produto-detalhe-voltar" onclick="voltarParaHome()">← Voltar</button>
+            <div class="produto-detalhe-box">
+                <div class="produto-detalhe-img">
+                    <img src="../images/tio-patinhas.png" alt="Tio Patinhas E A Última Aventura">
+                </div>
+                <div class="produto-detalhe-info">
+                    <h2>Tio Patinhas E A Última Aventura</h2>
+                    <p class="produto-detalhe-subtitulo">Por Don Rosa</p>
+                    <div class="produto-detalhe-avaliacao">
+                        <span>★★★★★</span>
+                        <small>(312 avaliações)</small>
+                    </div>
+                    <p class="produto-detalhe-preco">R$ 129,99</p>
+                    <p class="produto-detalhe-descricao">
+                        Uma das histórias mais emocionantes do universo Disney, acompanhando Tio Patinhas em sua última
+                        grande aventura.
+                    </p>
+                    <ul class="produto-detalhe-tecnico">
+                        <li>Editora: Abril</li>
+                        <li>Idioma: Português</li>
+                        <li>Encadernação: Capa dura</li>
+                        <li>Número de páginas: 256</li>
+                        <li>Data de lançamento: 08/2021</li>
+                    </ul>
+                    <div class="produto-detalhe-compra">
+                        <label for="quantidade">Quantidade:</label>
+                        <input type="number" id="quantidade" name="quantidade" min="1" value="1">
+                        <button class="produto-detalhe-btn">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+            <div class="produto-relacionado">
+                <h3>Produtos Relacionados</h3>
+                <div class="produto-relacionado-lista">
+                    <!-- Cards com produtos relacionados -->
+                </div>
+            </div>
+        </div>
     </section>
 
     <script>

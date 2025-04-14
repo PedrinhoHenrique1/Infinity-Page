@@ -188,3 +188,51 @@ function excluirProduto(botao) {
         editandoProduto = null;
     }
 }
+
+window.onload = () => {
+    mostrarSecao('estoque');
+  };
+
+function mostrarSecao(id) {
+    const secoes = document.querySelectorAll("section");
+    secoes.forEach(secao => secao.classList.remove("active"));
+
+    const secaoSelecionada = document.getElementById(id);
+    if (secaoSelecionada) {
+      secaoSelecionada.classList.add("active");
+    }
+  }
+
+document.getElementById("login-form").addEventListener("submit", function (e) {
+    switch (usuarioLogado.tipo) {
+        case 'funcionario':
+            sidebar.innerHTML = `
+                <li><a href="caixa.html"><i class="fas fa-cash-register"></i> Área do Caixa</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            `;
+          
+            if (!window.location.pathname.includes('estoque') &&
+                !window.location.pathname.includes("index.html")) {
+                window.location.href = "caixa.html";
+            }
+            break;
+
+        case 'admin':
+            sidebar.innerHTML = `
+                <li><a href="garcom.html"><i class="fas fa-utensils"></i> Área do Garçom</a></li>
+                <li><a href="caixa.html"><i class="fas fa-cash-register"></i> Área do Caixa</a></li>
+                <li><a href="relatorio.html"><i class="fas fa-chart-line"></i> Relatórios</a></li>
+                <li><a href="estoque.html"><i class="fas fa-boxes"></i> Estoque</a></li>
+                <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                <li><a href="usuario.html"><i class="fa-solid fa-users"></i> Usuários</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            `;
+            break;
+
+        default:
+            // Se o tipo de usuário não for reconhecido, redireciona para o login
+            window.location.href = "index.html";
+            break;
+    }
+
+  });

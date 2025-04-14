@@ -6,11 +6,19 @@ body.admin {
 }
 
 header.admin {
+    display: flex;
     background: linear-gradient(to right, #1e1f3b, #4d6ac5);
     color: white;
     padding: 10px 20px;
     text-align: center;
     position: relative;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header button {
+    position: relative;
+    margin-right: 45px; 
 }
 
 header.admin i {
@@ -74,6 +82,7 @@ main section {
   
   .dropdown-content {
     display: none;
+    right: 0;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;

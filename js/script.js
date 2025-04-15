@@ -203,6 +203,38 @@ function mostrarSecao(id) {
     }
   }
 
+  function atualizarTotais() {
+    const linhas = document.querySelectorAll("tbody tr");
+    let total = 0;
+  
+    linhas.forEach((linha) => {
+      const preco = parseFloat(linha.querySelector(".preco").textContent);
+      const qtdInput = linha.querySelector(".quantidade");
+      const quantidade = parseInt(qtdInput.value);
+      const subtotal = preco * quantidade;
+      linha.querySelector(".subtotal").textContent = subtotal.toFixed(2);
+      total += subtotal;
+    });
+  
+    document.getElementById("total").textContent = total.toFixed(2);
+  }
+  
+  // Atualiza ao alterar quantidade
+  document.querySelectorAll(".quantidade").forEach(input => {
+    input.addEventListener("input", atualizarTotais);
+  });
+  
+  // Remover item do carrinho
+  document.querySelectorAll(".btn-remover").forEach(botao => {
+    botao.addEventListener("click", (event) => {
+      event.target.closest("tr").remove();
+      atualizarTotais();
+    });
+  });
+  
+  // Atualiza o total ao carregar a página
+  window.addEventListener("load", atualizarTotais);
+
 document.getElementById("login-form").addEventListener("submit", function (e) {
     switch (usuarioLogado.tipo) {
         case 'funcionario':

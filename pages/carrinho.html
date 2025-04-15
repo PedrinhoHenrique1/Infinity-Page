@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrinho de Compras</title>
+  <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1>Carrinho de Compras</h1>
+    <a href="inicial.html" class="btn-voltar">← Voltar para a Página Inicial</a>
+  </header>
+
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.cabecalho {
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.btn-voltar {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  background-color: #6c757d;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.btn-voltar:hover {
+  background-color: #5a6268;
+}
+
+.conteudo {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.tabela-carrinho {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.tabela-carrinho th,
+.tabela-carrinho td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.tabela-carrinho th {
+  background-color: #e9ecef;
+}
+
+.quantidade {
+  width: 60px;
+  padding: 5px;
+}
+
+.btn-remover {
+  background-color: #dc3545;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-remover:hover {
+  background-color: #c82333;
+}
+
+.resumo-carrinho {
+  text-align: right;
+  font-size: 18px;
+}
+
+.btn-finalizar {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-finalizar:hover {
+  background-color: #218838;
+}
+  </style>
+
+  <main class="conteudo">
+    <section class="carrinho">
+      <table class="tabela-carrinho">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Subtotal</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Livro: O Segredo</td>
+            <td class="preco">39.90</td>
+            <td><input type="number" value="1" min="1" class="quantidade"></td>
+            <td class="subtotal">39.90</td>
+            <td><button class="btn-remover">Remover</button></td>
+          </tr>
+          <tr>
+            <td>Livro: Dom Casmurro</td>
+            <td class="preco">25.00</td>
+            <td><input type="number" value="2" min="1" class="quantidade"></td>
+            <td class="subtotal">50.00</td>
+            <td><button class="btn-remover">Remover</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="resumo-carrinho">
+        <p><strong>Total:</strong> R$ <span id="total">89.90</span></p>
+        <button class="btn-finalizar">Finalizar Compra</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

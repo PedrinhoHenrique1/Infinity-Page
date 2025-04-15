@@ -19,7 +19,7 @@ function voltarParaHome() {
     // Mostra o conteúdo principal
     document.getElementById("conteudo-principal").style.display = "block";
 
-    // Esconde todos os detalhes de produtos
+
     document.querySelectorAll(".produto-detalhe").forEach((d) => {
         d.style.display = "none";
     });

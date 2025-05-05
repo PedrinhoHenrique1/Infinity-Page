@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="pedidos" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="pedidos.css" />
+</head>
+<style>
+    body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  .cabecalho {
+    background: linear-gradient(to right, #1e1f3b, #4d6ac5);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cabecalho h1 {
+    margin: 0;
+    font-size: 32px;
+  }
+  
+  .btn-voltar {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 8px 14px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-voltar:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .conteudo {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  
+  .grid-favoritos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  
+  .card-favorito {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  
+  .card-favorito:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-favorito img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .card-favorito h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .card-favorito p {
+    font-size: 14px;
+    color: #666;
+    margin: 6px 0 12px;
+  }
+  
+  .card-favorito .preco {
+    font-size: 16px;
+    color: #222;
+    font-weight: bold;
+    margin: 4px 0 12px;
+  }
+  
+  .acoes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .btn-adicionar {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-adicionar:hover {
+    background-color: #388e3c;
+  }
+  
+  .btn-remover {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-remover:hover {
+    background-color: #c0392b;
+  }
+
+  .rastreamento, .avaliacao {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.rastreamento h2, .avaliacao h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #1e1f3b;
+}
+
+.linha-tempo {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.linha-tempo li {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 10px 0;
+    color: #999;
+}
+
+.linha-tempo li::before {
+    content: "●";
+    display: block;
+    font-size: 20px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.linha-tempo li.concluido {
+    color: #4caf50;
+}
+
+.linha-tempo li.concluido::before {
+    color: #4caf50;
+}
+
+.linha-tempo li.atual {
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.linha-tempo li.atual::before {
+    color: #2196f3;
+}
+
+.avaliacao textarea {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    resize: vertical;
+    font-size: 14px;
+}
+
+   
+
+
+</style>
+<body>
+    <header class="cabecalho">
+        <h1>Meus Pedidos</h1>
+      </header>
+
+      <main class="conteudo">
+        <section class="grid-favoritos">
+          <div class="card-favorito">
+            <img src="../images/jairo-zeppelin.png" alt="Livro 1" />
+            <h3> Jojo's Bizarre Adventure – Parte 7 – Steel Ball Run 01</h3>
+            <p>Autor: Hirohiko Araki </p>
+            <p class="preco">Preço: R$ 54,90</p>
+            <section class="avaliacao">
+                <h2>Avaliação do Pedido</h2>
+                <form>
+                    <label for="nota">Nota:</label>
+                    <select id="nota" name="nota">
+                        <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                        <option value="4">⭐️⭐️⭐️⭐️</option>
+                        <option value="3">⭐️⭐️⭐️</option>
+                        <option value="2">⭐️⭐️</option>
+                        <option value="1">⭐️</option>
+                    </select>
+                    <br><br>
+                    <label for="comentario">Comentário:</label><br>
+                    <textarea id="comentario" name="comentario" rows="4" cols="50" placeholder="Escreva sua opinião..."></textarea><br><br>
+                    <button type="submit" class="btn-adicionar">Enviar Avaliação</button>
+                </form>
+            </section>
+            
+          </div>
+    
+          <div class="card-favorito">
+            <img src="../images/batman.png" alt="Livro 2" />
+            <h3> Batman: Boa Noite, Bom Cavaleiro </h3>
+            <p>Autor: Darick Robertson </p>
+            <p class="preco">Preço: R$ 24,90</p>
+            <section class="avaliacao">
+                <h2>Avaliação do Pedido</h2>
+                <form>
+                    <label for="nota">Nota:</label>
+                    <select id="nota" name="nota">
+                        <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                        <option value="4">⭐️⭐️⭐️⭐️</option>
+                        <option value="3">⭐️⭐️⭐️</option>
+                        <option value="2">⭐️⭐️</option>
+                        <option value="1">⭐️</option>
+                    </select>
+                    <br><br>
+                    <label for="comentario">Comentário:</label><br>
+                    <textarea id="comentario" name="comentario" rows="4" cols="50" placeholder="Escreva sua opinião..."></textarea><br><br>
+                    <button type="submit" class="btn-adicionar">Enviar Avaliação</button>
+                </form>
+            </section>
+            <section class="avaliacao">
+
+               
+            <div class="acoes">
+            </div>
+          </div>
+
+
+
+
+
+
+          <section class="rastreamento">
+            <h2>Rastreamento do Pedido</h2>
+            <ul class="linha-tempo">
+                <li class="concluido">Pedido Recebido</li>
+                <li class="concluido">Em Separação</li>
+                <li class="atual">Em Transporte</li>
+                <li>A Caminho</li>
+                <li>Entregue</li>
+            </ul>
+        </section>
+
+       
+
+</body>
+</html>

@@ -80,41 +80,81 @@
             <button class="dc-button" data-category="colecionaveis"> Colecionáveis </button>
         </nav2>
 
-        <section>
-            <h2> Novidades </h2>
+        <section class="conteudo-categoria" data-category="ficcao" hidden>
+            <h2>Ficção</h2>
+            <div class="products-container">
+                <!-- Cards de produtos de Ficção -->
+                <div class="product">
+                    <img src="../images/livro-ficcao1.png" alt="Livro Ficção 1">
+                    <h3>Livro Ficção 1</h3>
+                    <p>R$ 29,90</p>
+                    <button class="buy-button">Comprar</button>
+                </div>
+                <!-- Adicione mais cards para esta categoria -->
+            </div>
         </section>
 
-        <section id="secao-produtos">
+        <section class="conteudo-categoria" data-category="romance" hidden>
+            <h2>Romance</h2>
             <div class="products-container">
-                <div class="product" onclick="mostrarDetalhe('1')">
-                    <img src="../images/coringa.png" alt="Livro 1">
-                    <h3> Batman: A Piada Mortal </h3>
-                    <p>R$ 30,90</p>
+                <div class="product">
+                    <img src="../images/duque-implacavel.png" alt="Livro Romance 1">
+                    <h3>O Duque Implacável</h3>
+                    <p>R$ 39,90</p>
                     <button class="buy-button">Comprar</button>
                 </div>
-
-                <div class="product" onclick="mostrarDetalhe('2')">
-                    <img src="../images/silver-fang.png" alt="Livro 2">
-                    <h3>One-Punch Man Vol. 4</h3>
-                    <p>R$ 42,90</p>
-                    <button class="buy-button">Comprar</button>
-                </div>
-
-                <div class="product" onclick="mostrarDetalhe('3')">
-                    <img src="../images/vingadores.png" alt="Livro 3">
-                    <h3>Os Vingadores 17/74</h3>
-                    <p>R$ 49,99</p>
-                    <button class="buy-button">Comprar</button>
-                </div>
-
-                <div class="product" onclick="mostrarDetalhe('4')">
-                    <img src="../images/tio-patinhas.png" alt="Livro 3">
-                    <h3> Tio Patinhas E A Última Aventura </h3>
-                    <p>R$ 129,99</p>
+                <div class="product">
+                    <img src="../images/ayrton-senna.png" alt="Livro Romance 1">
+                    <h3>Veloz como o Vento </h3>
+                    <p>R$ 58,00</p>
                     <button class="buy-button">Comprar</button>
                 </div>
             </div>
         </section>
+
+        <div id="conteudo-site">
+            <section class="category-section" data-category="ficcao" hidden>Conteúdo de Ficção</section>
+            <section class="category-section" data-category="romance" hidden>Conteúdo de Romance</section>
+            <section class="category-section" data-category="comedia" hidden>Conteúdo de Comédia</section>
+            <section class="category-section" data-category="quadrinhos" hidden>Conteúdo de Quadrinhos</section>
+            <section class="category-section" data-category="academico" hidden>Conteúdo Acadêmico</section>
+            <section class="category-section" data-category="colecionaveis" hidden>Conteúdo de Colecionáveis</section>
+
+            <section>
+                <h2> Novidades </h2>
+            </section>
+
+            <section id="secao-produtos">
+                <div class="products-container">
+                    <div class="product" onclick="mostrarDetalhe('1')">
+                        <img src="../images/coringa.png" alt="Livro 1">
+                        <h3> Batman: A Piada Mortal </h3>
+                        <p>R$ 30,90</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+
+                    <div class="product" onclick="mostrarDetalhe('2')">
+                        <img src="../images/silver-fang.png" alt="Livro 2">
+                        <h3>One-Punch Man Vol. 4</h3>
+                        <p>R$ 42,90</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+
+                    <div class="product" onclick="mostrarDetalhe('3')">
+                        <img src="../images/vingadores.png" alt="Livro 3">
+                        <h3>Os Vingadores 17/74</h3>
+                        <p>R$ 49,99</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+
+                    <div class="product" onclick="mostrarDetalhe('4')">
+                        <img src="../images/tio-patinhas.png" alt="Livro 3">
+                        <h3> Tio Patinhas E A Última Aventura </h3>
+                        <p>R$ 129,99</p>
+                        <button class="buy-button">Comprar</button>
+                    </div>
+                </div>
+            </section>
     </main>
 
     <section id="detalhe-produto-1" class="produto-detalhe" style="display: none;">
@@ -290,7 +330,7 @@
             </div>
         </div>
     </section>
-
+    </div>
 
 
     <script>
@@ -340,6 +380,57 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             verificarLogin();
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            verificarLogin();
+
+            // Sistema de exibição de categorias
+            const buttons = document.querySelectorAll('.dc-button');
+            const sections = document.querySelectorAll('.category-section');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const category = button.dataset.category;
+
+                    // Esconde todas as seções
+                    sections.forEach(section => {
+                        section.hidden = section.dataset.category !== category;
+                    });
+
+                    // Opcional: destaque o botão ativo
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+        });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // ... outros códigos ...
+
+            const buttons = document.querySelectorAll('.dc-button');
+            const conteudoSite = document.getElementById('conteudo-site');
+            const categorias = document.querySelectorAll('.conteudo-categoria');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Esconde todo conteúdo do site menos o header
+                    conteudoSite.style.display = 'none';
+
+                    // Esconde todas as categorias
+                    categorias.forEach(cat => cat.hidden = true);
+
+                    // Exibe a categoria clicada
+                    const category = button.dataset.category;
+                    const section = document.querySelector(`.conteudo-categoria[data-category="${category}"]`);
+                    if (section) section.hidden = false;
+
+                    // Destaque visual do botão ativo (opcional)
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
         });
     </script>
 

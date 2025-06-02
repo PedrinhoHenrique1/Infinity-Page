@@ -190,6 +190,10 @@ nav ul li a:hover {
     background-color: #5073ff;
 }
 
+.conteudo-categoria[hidden] {
+    display: none !important;
+}
+
 h2 {
     display: flex;
     align-items: center;

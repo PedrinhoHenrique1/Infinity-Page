@@ -4,273 +4,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administrador - Infinity Page</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/admin.css">
-    <title> Gerenciamento </title>
 </head>
 
-<body class="admin">
-    <header class="admin">
-        <h1>Gerenciamento - Infinity Page </h1>
-        <div class="dropdown">
-            <button class="dropbtn"> Opções </button>
-            <div class="dropdown-content">
-                <a onclick="mostrarSecao('estoque')"> Estoque</a>
-                <a onclick="mostrarSecao('funcionarios')"> Funcionários </a>
-                <a onclick="mostrarSecao('cadastro-produto')"> Produtos </a>
-                <a onclick="mostrarSecao('relatorio-financeiro')"> Finanças </a>
-                <a onclick="mostrarSecao('pedidos')"> Pedidos </a>
-                <a onclick="mostrarSecao('envios')"> Envios </a>
-                <a onclick="mostrarSecao('suporte')"> Suporte </a>
-                <a onclick="mostrarSecao('estatisticas')"> Estatísticas </a>
-                <a onclick="mostrarSecao('cupons')"> Cupons </a>
-            </div>
+<body>
+    <button class="menu-btn" id="toggle-btn">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>Admin Menu</h2>
+        </div>
+        <ul>
+            <li><a href="#" class="nav-link active" onclick="mostrarSecao('estoque', this)"><i class="fas fa-boxes"></i>Estoque</a></li>
+            <li><a href="#" class="nav-link" onclick="mostrarSecao('funcionarios', this)"><i class="fas fa-users-cog"></i>Funcionários</a></li>
+            <li><a href="#" class="nav-link" onclick="mostrarSecao('cadastro-produto', this)"><i class="fas fa-plus-circle"></i>Produtos</a></li>
+            <li><a href="inicial.html"><i class="fa-solid fa-store"></i>Ver a Loja</a></li>
+            <li><a href="login.html"><i class="fa-solid fa-door-open"></i>Sair</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" width="150px">
+        </div>
+        <div class="header-center-content">
+            <h1>Painel de Administração</h1>
+        </div>
+        <div class="header-right-content">
+            <a href="#">
+                <span>Admin User</span>
+                <i class="fa-solid fa-user-shield"></i>
+            </a>
         </div>
     </header>
-    <main>
-        <section id="estoque" class="estoque">
-            <h2>Estoque</h2>
-            <p>Gerencie os livros e produtos disponíveis na livraria.</p>
-            <form id="form-estoque" class="form-estoque" onsubmit="adicionarItem(event)">
-                <label for="nome-livro">Nome do Livro:</label>
-                <input type="text" id="nome-livro" name="nome-livro" required>
 
-                <label for="autor-livro">Autor:</label>
-                <input type="text" id="autor-livro" name="autor-livro" required>
-
-                <label for="quantidade">Quantidade:</label>
-                <input type="number" id="quantidade" name="quantidade" required min="0">
-
-                <label for="preco">Preço:</label>
-                <input type="number" id="preco" name="preco" required min="0" step="0.01">
-
-                <button type="submit">Adicionar ao Estoque</button>
-            </form>
-
-            <h3>Livros em Estoque</h3>
-            <table class="tabela-estoque">
-                <thead>
-                    <tr>
-                        <th>Nome do Livro</th>
-                        <th>Autor</th>
-                        <th>Quantidade</th>
-                        <th>Preço</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-estoque">
-                </tbody>
-            </table>
+    <main id="conteudo-principal">
+        <section id="estoque" class="section active">
+            <h2>Gerenciamento de Estoque</h2>
+            <div class="form-container">
+                <h3>Adicionar Novo Livro</h3>
+                <form id="form-estoque" onsubmit="adicionarItem(event)">
+                    <label for="nome-livro">Nome do Livro:</label>
+                    <input type="text" id="nome-livro" required>
+                    <label for="autor-livro">Autor:</label>
+                    <input type="text" id="autor-livro" required>
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" required min="0">
+                    <label for="preco">Preço:</label>
+                    <input type="number" id="preco" required min="0" step="0.01">
+                    <button type="submit">Adicionar Item</button>
+                </form>
+            </div>
+            <div class="table-container">
+                <h3>Livros em Estoque</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nome do Livro</th>
+                            <th>Autor</th>
+                            <th>Qtd.</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-estoque">
+                        </tbody>
+                </table>
+            </div>
         </section>
-        <section id="funcionarios" class="funcionarios">
+
+        <section id="funcionarios" class="section">
             <h2>Gerenciamento de Funcionários</h2>
-
-            <form id="form-func" class="form-func" onsubmit="adicionarFuncionario(event)">
-                <label for="nome-func">Nome do Funcionário:</label>
-                <input type="text" id="nome-func" name="nome-func" required>
-
-                <label for="email-func">Email:</label>
-                <input type="email" id="email-func" name="email-func" required>
-
-                <label for="senha-func">Senha:</label>
-                <input type="password" id="senha-func" name="senha-func" required>
-
-                <label for="permissao-func">Permissão:</label>
-                <select id="permissao-func" name="permissao-func" required>
-                    <option value="">Selecione</option>
-                    <option value="Administrador"> Administrador </option>
-                    <option value="Funcionário"> Funcionário </option>
-                </select>
-                <br>
-
-                <button type="submit">Adicionar Funcionário</button>
-            </form>
-
-            <h3>Funcionários Cadastrados</h3>
-            <table class="tabela-func">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Permissão</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-func">
-                    <tr>
-                        <td>João Silva</td>
-                        <td>joao@email.com</td>
-                        <td>admin</td>
-                        <td>
-                            <button class="btn-acao-func" onclick="editarFuncionario(this)">Editar</button>
-                            <button class="btn-acao-func" onclick="excluirFuncionario(this)">Excluir</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        <section id="cadastro-produto" class="cadastro-produto">
-            <h2>Cadastro de Produtos</h2>
-
-            <form id="form-produto" class="form-produto" onsubmit="salvarProduto(event)">
-                <label for="nome-produto">Nome do Produto:</label>
-                <input type="text" id="nome-produto" name="nome-produto" required>
-
-                <label for="preco-produto">Preço:</label>
-                <input type="number" step="0.01" id="preco-produto" name="preco-produto" required>
-
-                <label for="categoria-produto">Categoria:</label>
-                <input type="text" id="categoria-produto" name="categoria-produto" required>
-                <br>
-
-                <button type="submit">Cadastrar Produto</button>
-            </form>
-
-            <h3>Produtos Cadastrados</h3>
-            <table class="tabela-produto">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                        <th>Categoria</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-produto">
-                </tbody>
-            </table>
-        </section>
-        <section id="relatorio-financeiro" class="relatorio-financeiro">
-            <h2>Relatório Financeiro</h2>
-
-            <div class="resumo-financeiro">
-                <div class="card-resumo receita">
-                    <h3>Receitas</h3>
-                    <p id="valor-receita">R$ 0,00</p>
-                </div>
-                <div class="card-resumo despesa">
-                    <h3>Despesas</h3>
-                    <p id="valor-despesa">R$ 0,00</p>
-                </div>
-                <div class="card-resumo saldo">
-                    <h3>Saldo</h3>
-                    <p id="valor-saldo">R$ 0,00</p>
-                </div>
+            <div class="form-container">
+                <h3>Adicionar Novo Funcionário</h3>
+                <form id="form-func" onsubmit="adicionarFuncionario(event)">
+                    <label for="nome-func">Nome:</label>
+                    <input type="text" id="nome-func" required>
+                    <label for="email-func">Email:</label>
+                    <input type="email" id="email-func" required>
+                    <label for="senha-func">Senha:</label>
+                    <input type="password" id="senha-func" required>
+                    <label for="permissao-func">Permissão:</label>
+                    <select id="permissao-func" required>
+                        <option value="">Selecione</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Funcionário">Funcionário</option>
+                    </select>
+                    <button type="submit">Adicionar Funcionário</button>
+                </form>
             </div>
-
-            <h3>Transações</h3>
-            <table class="tabela-financeira">
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Descrição</th>
-                        <th>Categoria</th>
-                        <th>Tipo</th>
-                        <th>Valor</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-transacoes">
-                    <!-- Linhas adicionadas via JavaScript -->
-                </tbody>
-            </table>
-        </section>
-        <section id="pedidos" class="pedidos">
-            <h2>Pedidos</h2>
-            <p>Visualize e gerencie todos os pedidos realizados na livraria.</p>
-            <table class="tabela-pedidos">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Cliente</th>
-                        <th>Data</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-pedidos">
-                    <!-- Pedidos inseridos via JS -->
-                </tbody>
-            </table>
-        </section>
-        <section id="envios" class="envios">
-            <h2>Envios</h2>
-            <p>Acompanhe o status de entrega dos pedidos.</p>
-            <table class="tabela-envios">
-                <thead>
-                    <tr>
-                        <th>Pedido</th>
-                        <th>Transportadora</th>
-                        <th>Código de Rastreamento</th>
-                        <th>Status</th>
-                        <th>Atualizar</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-envios">
-                    <!-- Dados de envio inseridos via JS -->
-                </tbody>
-            </table>
-        </section>
-        <section id="suporte" class="suporte">
-            <h2>Suporte ao Cliente</h2>
-            <p>Gerencie mensagens e solicitações de clientes.</p>
-            <table class="tabela-suporte">
-                <thead>
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Email</th>
-                        <th>Mensagem</th>
-                        <th>Status</th>
-                        <th>Responder</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-suporte">
-                    <!-- Chamados de suporte inseridos via JS -->
-                </tbody>
-            </table>
-        </section>
-        <section id="estatisticas" class="estatisticas">
-            <h2>Estatísticas</h2>
-            <p>Acompanhe dados sobre vendas e desempenho da livraria.</p>
-            <div class="graficos-estatisticas">
-                <!-- Espaço para gráficos ou cards com dados -->
-                <p>Gráfico de vendas mensais (em breve)</p>
+            <div class="table-container">
+                <h3>Funcionários Cadastrados</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Permissão</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-func">
+                        <tr>
+                            <td>João Silva</td>
+                            <td>joao@email.com</td>
+                            <td>admin</td>
+                            <td class="actions">
+                                <button class="btn-edit" onclick="editarFuncionario(this)">Editar</button>
+                                <button class="btn-delete" onclick="excluirFuncionario(this)">Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
-        <section id="cupons" class="cupons">
-            <h2>Gerar Cupons e Promoções</h2>
-            <form id="form-cupom" class="form-cupom" onsubmit="gerarCupom(event)">
-                <label for="codigo-cupom">Código do Cupom:</label>
-                <input type="text" id="codigo-cupom" name="codigo-cupom" required>
-
-                <label for="desconto">Desconto (%):</label>
-                <input type="number" id="desconto" name="desconto" required min="1" max="100">
-
-                <label for="validade">Validade:</label>
-                <input type="date" id="validade" name="validade" required>
-
-                <button type="submit">Criar Cupom</button>
-            </form>
-
-            <h3>Cupons Ativos</h3>
-            <table class="tabela-cupom">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Desconto</th>
-                        <th>Validade</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-cupom">
-                    <!-- Cupons inseridos via JS -->
-                </tbody>
-            </table>
-        </section>
+        
+        <section id="cadastro-produto" class="section">
+            <h2>Cadastro de Produtos (não livros)</h2>
+            </section>
     </main>
-    <script src="../js/script.js"> </script>
+    <script src="../js/script.js"></script>
 </body>
-
 </html>

@@ -1,192 +1,214 @@
-        /* CSS Combinado e Adaptado para o Painel Admin */
-        * {
-            font-family: "Poppins", sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* CSS Combinado e Adaptado para o Painel Admin */
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            background-color: #f4f7f9; /* Um fundo suave para o conteúdo */
-        }
-        
-        /* HEADER - Exatamente como na página inicial */
-        header {
-            background: linear-gradient(to right, #1e1f3b, #4d6ac5);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0px 20px;
-            height: 120px;
-            color: white;
-        }
+body {
+    background-color: #f4f7f9; /* Um fundo suave para o conteúdo */
+}
 
-        .logo {
-            height: 105px;
-            position: absolute;
-            left: 120px;
-        }
+/* HEADER - Exatamente como na página inicial */
+header {
+    background: linear-gradient(to right, #1e1f3b, #4d6ac5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    height: 120px;
+    color: white;
+}
 
-        .header-center-content {
-            flex-grow: 1;
-            text-align: center;
-        }
-        
-        .header-center-content h1 {
-            font-size: 2.5rem;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 2px;
-        }
+.logo {
+    height: 105px;
+    position: absolute;
+    left: 120px;
+}
 
-        .header-right-content a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        /* SIDEBAR (MENU LATERAL) - Estilo da inicial, mas com links do admin */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #4d505f;
-            color: white;
-            padding: 20px;
-            transition: left 0.3s ease;
-            z-index: 1001;
-        }
+.header-center-content {
+    flex-grow: 1;
+    text-align: center;
+}
 
-        .sidebar.active {
-            left: 0;
-        }
+.header-center-content h1 {
+    font-size: 2.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+}
 
-        .sidebar-header {
-            background-color: #4259a6;
-            padding: 20px;
-            margin: -20px -20px 20px -20px;
-            border-bottom: 2px solid white;
-            text-align: center;
-        }
+.header-right-content a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .sidebar ul {
-            list-style-type: none;
-        }
+/* SIDEBAR (MENU LATERAL) - Estilo da inicial, mas com links do admin */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #4d505f;
+    color: white;
+    padding: 20px;
+    transition: left 0.3s ease;
+    z-index: 1001;
+}
 
-        .sidebar ul li {
-            padding-top: 15px;
-        }
-        
-        .sidebar ul li a {
-            text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        
-        .sidebar ul li a i {
-            margin-right: 15px;
-            width: 20px;
-        }
-        
-        .sidebar ul li a:hover, .sidebar ul li a.active {
-            background-color: #4259a6;
-        }
-        
-        /* BOTÃO DE MENU (HAMBURGUER) */
-        .menu-btn {
-            position: absolute;
-            top: 45px;
-            left: 40px;
-            background-color: #ffffff;
-            color: rgb(0, 0, 0);
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            z-index: 1000;
-            border-radius: 5px;
-        }
-        
-        /* CONTEÚDO PRINCIPAL */
-        main {
-            padding: 140px 30px 30px 30px; /* Espaço para o header */
-        }
-        
-        .section {
-            display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .section.active {
-            display: block;
-        }
-        
-        /* ESTILOS UNIFICADOS PARA FORMS E TABELAS */
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            margin-bottom: 15px;
-        }
-        .form-container {
-            max-width: 600px;
-            margin-bottom: 30px;
-        }
-        .table-container {
-            overflow-x: auto;
-        }
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .data-table th, .data-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .data-table thead {
-            background-color: #f2f2f2;
-        }
-        
-        button {
-            background: #4259a6;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background: #1e1f3b;
-        }
-        
-        .actions button { margin-right: 5px; }
-        .btn-edit { background-color: #ffc107; color: #333; }
-        .btn-delete { background-color: #dc3545; }
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    background-color: #4259a6;
+    padding: 20px;
+    margin: -20px -20px 20px -20px;
+    border-bottom: 2px solid white;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    padding-top: 15px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a i {
+    margin-right: 15px;
+    width: 20px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background-color: #4259a6;
+    font-weight: bold; /* NOVO: reforça o botão ativo */
+}
+
+/* BOTÃO DE MENU (HAMBURGUER) */
+.menu-btn {
+    position: absolute;
+    top: 45px;
+    left: 40px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+/* CONTEÚDO PRINCIPAL */
+main {
+    padding: 140px 30px 30px 30px; /* Espaço para o header */
+}
+
+/* SEÇÕES (VISIBILIDADE ATIVA) */
+.section {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.section.active {
+    display: block;
+}
+
+/* ESTILOS UNIFICADOS PARA FORMS E TABELAS */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.data-table thead {
+    background-color: #f2f2f2;
+}
+
+button {
+    background: #4259a6;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #1e1f3b;
+}
+
+.actions button {
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}

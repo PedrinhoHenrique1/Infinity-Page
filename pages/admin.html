@@ -24,9 +24,11 @@
             <h2>Admin Menu</h2>
         </div>
         <ul>
-            <li><a href="#" class="nav-link active" onclick="mostrarSecao('estoque', this)"><i class="fas fa-boxes"></i>Estoque</a></li>
-            <li><a href="#" class="nav-link" onclick="mostrarSecao('funcionarios', this)"><i class="fas fa-users-cog"></i>Funcionários</a></li>
-            <li><a href="#" class="nav-link" onclick="mostrarSecao('cadastro-produto', this)"><i class="fas fa-plus-circle"></i>Produtos</a></li>
+            <li><a href="#" class="nav-link active" data-section="estoque"><i class="fas fa-boxes"></i>Estoque</a></li>
+            <li><a href="#" class="nav-link" data-section="funcionarios"><i
+                        class="fas fa-users-cog"></i>Funcionários</a></li>
+            <li><a href="#" class="nav-link" data-section="cadastro-produto"><i
+                        class="fas fa-plus-circle"></i>Produtos</a></li>
             <li><a href="inicial.html"><i class="fa-solid fa-store"></i>Ver a Loja</a></li>
             <li><a href="login.html"><i class="fa-solid fa-door-open"></i>Sair</a></li>
         </ul>
@@ -77,7 +79,7 @@
                         </tr>
                     </thead>
                     <tbody id="tabela-estoque">
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
         </section>
@@ -127,11 +129,12 @@
                 </table>
             </div>
         </section>
-        
+
         <section id="cadastro-produto" class="section">
             <h2>Cadastro de Produtos (não livros)</h2>
-            </section>
+        </section>
     </main>
     <script src="../js/script.js"></script>
 </body>
+
 </html>

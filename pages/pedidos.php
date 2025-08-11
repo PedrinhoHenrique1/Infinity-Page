@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="pedidos.css" />
 </head>
     <style>
-        /* === RESET BÁSICO E ESTILOS GLOBAIS === */
         :root {
             --primary-dark: #1e1f3b;
             --primary-light: #4d6ac5;

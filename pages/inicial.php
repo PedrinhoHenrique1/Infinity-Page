@@ -266,7 +266,7 @@
                     </p>
                     <ul class="produto-detalhe-tecnico">
                         <li>Editora: Marvel Comics</li>
-                        <li>Idioma: Português</li>
+                        <li> Idioma: Português </li>
                         <li>Encadernação: Capa dura</li>
                         <li>Número de páginas: 96</li>
                         <li>Data de lançamento: 05/2022</li>
@@ -315,7 +315,7 @@
                         <li>Data de lançamento: 08/2021</li>
                     </ul>
                     <div class="produto-detalhe-compra">
-                        <label for="quantidade">Quantidade:</label>
+                        <label for="quantidade"> Quantidade: </label>
                         <input type="number" id="quantidade" name="quantidade" min="1" value="1">
                         <button class="produto-detalhe-btn" href="pagamento.html"> Comprar </button>
                         <button class="produto-detalhe-btn"> Adicionar ao carrinho </button>

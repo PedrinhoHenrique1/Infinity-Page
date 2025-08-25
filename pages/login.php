@@ -138,7 +138,7 @@
         </div>
 
         <div class="links-container">
-            <a href="esqueci_senha1.html">Esqueci minha senha</a>
+            <a href="esqueci_senha1.php">Esqueci minha senha</a>
             <a href="criar_conta.html">Ainda não tem conta? Crie uma agora!</a>
         </div>         
     </div>

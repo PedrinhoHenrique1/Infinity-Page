@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background: linear-gradient(to right, #1e1f3b, #4d6ac5); 
+    background: linear-gradient(to right, #1e1f3b, #4d6ac5);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -203,7 +203,7 @@ h2 {
 
 .products-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(5, 1fr); /* LINHA ALTERADA */
     gap: 20px;
     max-width: 1200px;
     margin: auto;
@@ -224,8 +224,8 @@ h2 {
 }
 
 .product img {
-    max-width: 350px;
-    max-height: 350px;
+    max-width: 100%; /* Imagem ocupa a largura do container */
+    height: auto;   /* Altura se ajusta para manter proporção */
     object-fit: cover;
     border-radius: 5px;
 }

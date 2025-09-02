@@ -1,0 +1,79 @@
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 30px;
+    }
+
+    .resumo, .pagamento {
+      flex: 1;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .resumo-pedido {
+      border-top: 1px solid #ddd;
+      margin-top: 15px;
+      padding-top: 15px;
+    }
+
+    .item-pedido {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .metodo-pagamento {
+      margin-bottom: 20px;
+    }

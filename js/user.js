@@ -29,10 +29,10 @@
                 // REDIRECIONA de acordo com o tipo de usuário
                 if (usuarioEncontrado.tipo === 'admin') {
                     alert('Login de Administrador bem-sucedido! Redirecionando...');
-                    window.location.href = 'admin.html'; // Manda para a página de admin
+                    window.location.href = 'admin.php'; // Manda para a página de admin
                 } else {
                     alert('Login bem-sucedido! Bem-vindo(a)!');
-                    window.location.href = 'inicial.html'; // Manda para a página inicial da loja
+                    window.location.href = 'inicial.php'; // Manda para a página inicial da loja
                 }
 
             } else {

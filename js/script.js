@@ -1,85 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.getElementById('toggle-btn');
-  const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('toggle-btn');
+    const sidebar = document.getElementById('sidebar');
 
-  toggleBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-  });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('.nav-link[data-section]');
-  const sidebar = document.getElementById('sidebar');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-
-      const sectionId = link.getAttribute('data-section');
-      mostrarSecao(sectionId, link);
-
-      // Fecha o menu lateral 
-      if (sidebar.classList.contains('active')) {
-        sidebar.classList.remove('active');
-      }
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
     });
-  });
 
-  // Mostra o estoque
-  const ativoInicial = document.querySelector('.nav-link.active[data-section]');
-  if (ativoInicial) {
-    mostrarSecao(ativoInicial.getAttribute('data-section'), ativoInicial);
-  }
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const sectionId = link.getAttribute('data-section');
+            mostrarSecao(sectionId, link);
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+    });
+
+    const ativoInicial = document.querySelector('.nav-link.active[data-section]');
+    if (ativoInicial) {
+        mostrarSecao(ativoInicial.getAttribute('data-section'), ativoInicial);
+    }
 });
 
 function mostrarSecao(sectionId, element) {
-  document.querySelectorAll('.section').forEach(secao => secao.classList.remove('active'));
-
-  const secao = document.getElementById(sectionId);
-  if (secao) {
-    secao.classList.add('active');
-  }
-
-  document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-  if (element) {
-    element.classList.add('active');
-  }
+    document.querySelectorAll('.section').forEach(secao => secao.classList.remove('active'));
+    const secao = document.getElementById(sectionId);
+    if (secao) {
+        secao.classList.add('active');
+    }
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    if (element) {
+        element.classList.add('active');
+    }
 }
 
-// ESTOQUE
-function adicionarItem(event) {
-    event.preventDefault();
-    const nomeLivro = document.getElementById('nome-livro').value;
-    const autorLivro = document.getElementById('autor-livro').value;
-    const quantidade = document.getElementById('quantidade').value;
-    const preco = parseFloat(document.getElementById('preco').value);
-    const tabela = document.getElementById('tabela-estoque');
-    const novaLinha = tabela.insertRow();
-    novaLinha.innerHTML = `
-        <td>${nomeLivro}</td>
-        <td>${autorLivro}</td>
-        <td>${quantidade}</td>
-        <td>R$ ${preco.toFixed(2)}</td>
-        <td class="actions">
-            <button class="btn-edit" onclick="editarItem(this)">Editar</button>
-            <button class="btn-delete" onclick="removerItem(this)">Remover</button>
-        </td>
-    `;
-    document.getElementById('form-estoque').reset();
+// Funções para o Modal de Edição de Livros
+function abrirModalEdicao(id, titulo, autor, quantidade, preco) {
+    document.getElementById('edit-id-produto').value = id;
+    document.getElementById('edit-nome-livro').value = titulo;
+    document.getElementById('edit-autor-livro').value = autor;
+    document.getElementById('edit-quantidade').value = quantidade;
+    document.getElementById('edit-preco').value = preco;
+    document.getElementById('modal-edicao').style.display = 'block';
 }
 
-function editarItem(button) {
-    
+function fecharModalEdicao() {
+    document.getElementById('modal-edicao').style.display = 'none';
 }
 
-function removerItem(button) {
-    button.closest('tr').remove();
-}
-
-// FUNCIONÁRIOS
+// FUNCIONÁRIOS (código existente)
 function adicionarFuncionario(event) {
     event.preventDefault();
-
     const nome = document.getElementById('nome-func').value.trim();
     const email = document.getElementById('email-func').value.trim();
     const permissao = document.getElementById('permissao-func').value;
@@ -90,9 +63,7 @@ function adicionarFuncionario(event) {
     }
 
     const tabela = document.getElementById('tabela-func');
-
     const novaLinha = tabela.insertRow();
-
     novaLinha.innerHTML = `
         <td>${nome}</td>
         <td>${email}</td>
@@ -102,13 +73,11 @@ function adicionarFuncionario(event) {
             <button class="btn-delete" onclick="excluirFuncionario(this)">Excluir</button>
         </td>
     `;
-
-    // Limpar o formulário
     event.target.reset();
 }
 
 function editarFuncionario(botao) {
-    // Sua lógica de edição aqui
+    // Lógica de edição para funcionários
 }
 
 function excluirFuncionario(botao) {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta - Infinity Page</title>
+    <link rel="stylesheet" href="css/minha_conta.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Minha Conta</h1>
+    </header>
+
+    <section id="informacoes-conta">
+        <h2>Informações da Conta</h2>
+        <p><strong>Nome:</strong> João da Silva</p>
+        <p><strong>E-mail:</strong> joao.silva@email.com</p>
+        <button onclick="editar()"> Editar Informações </button>
+    </section>
+
+    <section id="historico-pedidos">
+        <h2>Histórico de Pedidos</h2>
+        <ul>
+            <li>
+                <h3>Pedido #12345</h3>
+                <p>Data: 01/10/2023</p>
+                <p>Status: Entregue</p>
+                <p>Total: R$ 89,90</p>
+                <button>Ver Detalhes</button>
+            </li>
+            <li>
+                <h3>Pedido #12346</h3>
+                <p>Data: 15/09/2023</p>
+                <p>Status: Em Trânsito</p>
+                <p>Total: R$ 49,90</p>
+                <button>Ver Detalhes</button>
+            </li>
+            <li>
+                <h3>Pedido #12347</h3>
+                <p>Data: 05/09/2023</p>
+                <p>Status: Cancelado</p>
+                <p>Total: R$ 34,90</p>
+                <button>Ver Detalhes</button>
+            </li>
+        </ul>
+    </section>
+
+    <section id="voltar">
+        <button onclick="window.location.href='inicial.php'"> Voltar </button>
+    </section>
+</body>
+</html>

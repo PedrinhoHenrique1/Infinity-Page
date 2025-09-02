@@ -2,84 +2,80 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.getElementById('toggle-btn');
     const sidebar = document.getElementById('sidebar');
 
-    toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-    });
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+    }
 
     const navLinks = document.querySelectorAll('.nav-link[data-section]');
     navLinks.forEach(link => {
         link.addEventListener('click', e => {
             e.preventDefault();
             const sectionId = link.getAttribute('data-section');
-            mostrarSecao(sectionId, link);
+
+            // Oculta todas as seções
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Mostra a seção clicada
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.style.display = 'block';
+            }
+
+            // Atualiza a classe 'active' no menu
+            navLinks.forEach(nav => nav.classList.remove('active'));
+            link.classList.add('active');
+
             if (sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
             }
         });
     });
 
-    const ativoInicial = document.querySelector('.nav-link.active[data-section]');
-    if (ativoInicial) {
-        mostrarSecao(ativoInicial.getAttribute('data-section'), ativoInicial);
+    // Garante que a seção de estoque seja exibida por padrão ao carregar
+    if (document.getElementById('estoque')) {
+        document.getElementById('estoque').style.display = 'block';
+    }
+    if (document.getElementById('funcionarios')) {
+        document.getElementById('funcionarios').style.display = 'none';
     }
 });
 
-function mostrarSecao(sectionId, element) {
-    document.querySelectorAll('.section').forEach(secao => secao.classList.remove('active'));
-    const secao = document.getElementById(sectionId);
-    if (secao) {
-        secao.classList.add('active');
-    }
-    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-    if (element) {
-        element.classList.add('active');
-    }
-}
-
 // Funções para o Modal de Edição de Livros
-function abrirModalEdicao(id, titulo, autor, quantidade, preco) {
-    document.getElementById('edit-id-produto').value = id;
-    document.getElementById('edit-nome-livro').value = titulo;
-    document.getElementById('edit-autor-livro').value = autor;
-    document.getElementById('edit-quantidade').value = quantidade;
-    document.getElementById('edit-preco').value = preco;
-    document.getElementById('modal-edicao').style.display = 'block';
+function abrirModalEdicao(livro) {
+    const modal = document.getElementById('modal-edicao');
+    if (modal) {
+        // Preenche os campos do formulário no modal com os dados do livro
+        document.getElementById('id_produto_edit').value = livro.id_produto;
+        document.getElementById('titulo_edit').value = livro.titulo;
+        document.getElementById('autor_edit').value = livro.autor;
+        document.getElementById('descricao_edit').value = livro.descricao;
+        document.getElementById('preco_edit').value = livro.preco;
+        document.getElementById('estoque_edit').value = livro.quantidade_estoque;
+        document.getElementById('categoria_edit').value = livro.id_categoria;
+        document.getElementById('editora_edit').value = livro.editora;
+        document.getElementById('idioma_edit').value = livro.idioma;
+        document.getElementById('encadernacao_edit').value = livro.encadernacao;
+        document.getElementById('paginas_edit').value = livro.numero_paginas;
+        document.getElementById('lancamento_edit').value = livro.data_lancamento;
+        modal.style.display = 'block';
+    }
 }
 
 function fecharModalEdicao() {
-    document.getElementById('modal-edicao').style.display = 'none';
-}
-
-// FUNCIONÁRIOS (código existente)
-function adicionarFuncionario(event) {
-    event.preventDefault();
-    const nome = document.getElementById('nome-func').value.trim();
-    const email = document.getElementById('email-func').value.trim();
-    const permissao = document.getElementById('permissao-func').value;
-
-    if (!nome || !email || !permissao) {
-        alert('Preencha todos os campos!');
-        return;
+    const modal = document.getElementById('modal-edicao');
+    if (modal) {
+        modal.style.display = 'none';
     }
-
-    const tabela = document.getElementById('tabela-func');
-    const novaLinha = tabela.insertRow();
-    novaLinha.innerHTML = `
-        <td>${nome}</td>
-        <td>${email}</td>
-        <td>${permissao}</td>
-        <td class="actions">
-            <button class="btn-edit" onclick="editarFuncionario(this)">Editar</button>
-            <button class="btn-delete" onclick="excluirFuncionario(this)">Excluir</button>
-        </td>
-    `;
-    event.target.reset();
 }
 
-function editarFuncionario(botao) {
-    // Lógica de edição para funcionários
-}
-
-function excluirFuncionario(botao) {
-    botao.closest('tr').remove();
+// Fecha o modal se o usuário clicar fora dele
+window.onclick = function(event) {
+    const modal = document.getElementById('modal-edicao');
+    if (event.target == modal) {
+        fecharModalEdicao();
+    }
 }
